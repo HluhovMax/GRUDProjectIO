@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="205c4c21-008b-4a08-85af-2d1a3e94741c" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/mvc/repository/JavaIOSkillRepositoryImpl.java" afterPath="$PROJECT_DIR$/src/main/java/mvc/repository/JavaIOSkillRepositoryImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-    </list>
+    <list default="true" id="205c4c21-008b-4a08-85af-2d1a3e94741c" name="Default" comment="" />
     <ignored path="GRUDProjectIO.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path="$PROJECT_DIR$/out/" />
@@ -605,12 +601,12 @@
       <created>1539520419852</created>
       <option name="number" value="Default" />
       <updated>1539520419852</updated>
-      <workItem from="1539520429970" duration="6213000" />
+      <workItem from="1539520429970" duration="6306000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="6213000" />
+    <option name="totallyTimeSpent" value="6306000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1366" height="768" extended-state="6" />
