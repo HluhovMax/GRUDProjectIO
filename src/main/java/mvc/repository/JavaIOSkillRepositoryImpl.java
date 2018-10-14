@@ -15,16 +15,9 @@ public class JavaIOSkillRepositoryImpl implements SkillRepository {
         byte[] buff = name.getBytes();
         byte[] idBuff = ID.getBytes();
         File file = new File("src\\main\\resources\\files\\skills.txt");
-        try (FileOutputStream outputStream =
-                     new FileOutputStream(file)) {
-            outputStream.write(idBuff);
-            outputStream.write(buff);
-            File file1 = new File("src\\main\\resources\\files\\fileSaver.txt");
-            FileOutputStream fos =
-                         new FileOutputStream(file1);
-            ObjectOutputStream oos = new ObjectOutputStream(fos);
-            oos.writeObject(file);
-
+        try (FileWriter fw = new FileWriter(file, true)) {
+            fw.write(ID);
+            fw.write(name + "\n");
         } catch (IOException e) {
             System.out.println("IO exception: " + e);
         }
