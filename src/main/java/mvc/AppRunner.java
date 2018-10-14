@@ -10,10 +10,10 @@ import java.io.IOException;
  */
 public class AppRunner {
     public static void main(String[] args) throws IOException {
-        Skill java = new Skill("1)", "java");
-        Skill sql = new Skill("2)", "sql");
-        Skill cpp = new Skill("3)", "c++");
-        Skill javaScript = new Skill("4)", "javaScript");
+        Skill java = new Skill(1l, "java");
+        Skill sql = new Skill(2l, "sql");
+        Skill cpp = new Skill(3l, "c++");
+        Skill javaScript = new Skill(4l, "javaScript");git
 
         JavaIOSkillRepositoryImpl r = new JavaIOSkillRepositoryImpl();
         r.save(java);

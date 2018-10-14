@@ -6,15 +6,15 @@ import java.io.Serializable;
  * Created by Max Hluhov on 14.10.2018.
  */
 public class Skill implements Serializable{
-    private String ID;
+    private Long ID;
     private String name;
 
-    public Skill(String ID, String name) {
+    public Skill(Long ID, String name) {
         this.ID = ID;
         this.name = name;
     }
 
-    public String getID() {
+    public Long getID() {
         return ID;
     }
 

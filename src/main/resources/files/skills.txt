@@ -1,4 +1,4 @@
-1)java
-2)sql
-3)c++
-4)javaScript
+1java
+2sql
+3c++
+4javaScript
