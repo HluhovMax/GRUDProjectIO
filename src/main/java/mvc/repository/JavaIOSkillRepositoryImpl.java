@@ -24,6 +24,7 @@ public class JavaIOSkillRepositoryImpl implements SkillRepository {
                          new FileOutputStream(file1);
             ObjectOutputStream oos = new ObjectOutputStream(fos);
             oos.writeObject(file);
+
         } catch (IOException e) {
             System.out.println("IO exception: " + e);
         }
