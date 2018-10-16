@@ -53,8 +53,9 @@ public class JavaIOSkillRepositoryImpl implements SkillRepository {
                 if (id.equals(idi)) {
                     skill = new Skill(idi, name);
                     return skill;
-                }
+                }//correct work
             }
+
         } catch (IOException e) {
             System.out.println(e);
         }

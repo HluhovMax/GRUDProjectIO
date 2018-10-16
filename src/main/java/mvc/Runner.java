@@ -28,8 +28,14 @@ public class Runner {
         }
     }
 
-    public static void remove(Long id) throws IOException {
+    public static void remove() throws IOException {
+        System.out.println("Enter 'id' to remove skill: ");
+        Scanner sc = new Scanner(System.in);
+        Long id = sc.nextLong();
         JavaIOSkillRepositoryImpl r = new JavaIOSkillRepositoryImpl();
         r.removeById(id);
+        System.out.println("Entered skill has been deleted.");
     }
+
+
 }
