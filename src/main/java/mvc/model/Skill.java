@@ -21,4 +21,12 @@ public class Skill implements Serializable{
     public String getName() {
         return name;
     }
+
+    @Override
+    public String toString() {
+        return "Skill{" +
+                "ID = " + ID +
+                ", name = '" + name + '\'' +
+                '}';
+    }
 }

@@ -1,5 +1,6 @@
 package mvc;
 
+import mvc.model.Skill;
 import mvc.repository.JavaIOSkillRepositoryImpl;
 
 import java.io.IOException;
@@ -11,6 +12,7 @@ import java.io.IOException;
 public class AppRunner {
     public static void main(String[] args) throws IOException {
         JavaIOSkillRepositoryImpl r = new JavaIOSkillRepositoryImpl();
-        r.delete("2.css/");
+        Skill skill = r.removeById(3L);
+        System.out.println(skill.toString());
     }
 }

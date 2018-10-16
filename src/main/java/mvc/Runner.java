@@ -27,4 +27,9 @@ public class Runner {
             oneTimeAddingSkill();
         }
     }
+
+    public static void remove(Long id) throws IOException {
+        JavaIOSkillRepositoryImpl r = new JavaIOSkillRepositoryImpl();
+        r.removeById(id);
+    }
 }
