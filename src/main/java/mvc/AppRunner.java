@@ -1,5 +1,8 @@
 package mvc;
 
+import mvc.model.Skill;
+import mvc.repository.JavaIOSkillRepositoryImpl;
+
 import java.io.IOException;
 
 /**
@@ -8,6 +11,8 @@ import java.io.IOException;
  */
 public class AppRunner {
     public static void main(String[] args) throws IOException {
-        Runner.remove();
+        Skill skill = new Skill(3l, "js");
+        JavaIOSkillRepositoryImpl r = new JavaIOSkillRepositoryImpl();
+        r.update(skill);
     }
 }

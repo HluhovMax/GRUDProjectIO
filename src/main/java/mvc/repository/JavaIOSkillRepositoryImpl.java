@@ -6,6 +6,7 @@ import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -60,5 +61,43 @@ public class JavaIOSkillRepositoryImpl implements SkillRepository {
             System.out.println(e);
         }
         return null;
+    }
+
+    public void update(Skill skill) {
+        Long id = skill.getID();
+        String fileToString;
+        String arr[] = new String[0];
+        List<String> list = new ArrayList<>();
+        String line = "";
+        try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
+            while ((fileToString = reader.readLine()) != null) {
+                fileToString = fileToString.trim();
+                if ((fileToString.length()) != 0) {
+                    list.add(fileToString);
+                }
+            }
+            arr = list.toArray(new String[list.size()]);
+            for (int i = 0; i < arr.length; i++) {
+                String record[] = arr[i].split(",");
+                Long recordId = Long.valueOf(record[0]);
+                if (id.equals(recordId)) {
+                    record[1] = skill.getName() + "/";// update point
+                }
+                arr[i] = Arrays.toString(record);
+            }
+            try (FileWriter wr = new FileWriter(file)) {
+                wr.write("");
+            }
+            for (int i = 0; i < arr.length; i++) {
+                arr[i] = arr[i].substring(1, arr[i].length() - 1);
+                try (FileWriter writer = new FileWriter(file, true)) {
+                    writer.write(arr[i]);
+                } catch (IOException e) {
+                    System.out.println(e.getMessage());
+                }
+            }
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
+        }
     }
 }
