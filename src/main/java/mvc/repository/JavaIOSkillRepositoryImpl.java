@@ -21,7 +21,7 @@ public class JavaIOSkillRepositoryImpl implements SkillRepository {
         ArrayList<String> arr = readLines(file);
         arr.add(skills);
         try (FileWriter fw = new FileWriter(file, true)) {
-            fw.write(skills+"\n");
+            fw.write("\n" + skills + "\n");
         } catch (IOException e) {
             System.out.println("IO exception: " + e);
         }
@@ -34,7 +34,7 @@ public class JavaIOSkillRepositoryImpl implements SkillRepository {
     }
 
 
-    public Skill removeById(Long id) {
+    public Skill delete(Long id) {
         Skill skill;
         String fileTostring;
         String[] arr;
@@ -53,8 +53,10 @@ public class JavaIOSkillRepositoryImpl implements SkillRepository {
                 String name = String.valueOf(recordLine[1]);
                 if (id.equals(idi)) {
                     skill = new Skill(idi, name);
+                    System.out.println("deleted skill: " + skill);
                     return skill;
                 }//correct work
+
             }
 
         } catch (IOException e) {
@@ -68,7 +70,6 @@ public class JavaIOSkillRepositoryImpl implements SkillRepository {
         String fileToString;
         String arr[] = new String[0];
         List<String> list = new ArrayList<>();
-        String line = "";
         try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
             while ((fileToString = reader.readLine()) != null) {
                 fileToString = fileToString.trim();

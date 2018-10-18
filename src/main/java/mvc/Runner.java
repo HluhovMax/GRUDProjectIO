@@ -10,6 +10,30 @@ import java.util.Scanner;
  * Created by Max Hluhov on 15.10.2018.
  */
 public class Runner {
+    public static void run() throws IOException {
+        System.out.println("Enter 1: for OneTimeAdding | 2: for manyTimeAdding | 3: for delete | 4: for update");
+        Scanner sc = new Scanner(System.in);
+        int i = sc.nextInt();
+        switch (i) {
+            case 1:
+                oneTimeAddingSkill();
+                break;
+            case 2:
+                System.out.println("How many skills?: ");
+                int k = sc.nextInt();
+                howManySkillsDoYouWantToAdd(k);
+                break;
+            case 3:
+                remove();
+                break;
+            case 4:
+                upToDate();
+                break;
+            default:
+                System.out.println("Another time");
+                break;
+        }
+    }
     public static void oneTimeAddingSkill() throws IOException {
         System.out.println("Enter id: ");
         Scanner sc = new Scanner(System.in);
@@ -33,9 +57,20 @@ public class Runner {
         Scanner sc = new Scanner(System.in);
         Long id = sc.nextLong();
         JavaIOSkillRepositoryImpl r = new JavaIOSkillRepositoryImpl();
-        r.removeById(id);
+        r.delete(id);
         System.out.println("Entered skill has been deleted.");
     }
 
+    public static void upToDate() {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter id: ");
+        Long id = sc.nextLong();
+        Scanner s = new Scanner(System.in);
+        System.out.println("Enter name: ");
+        String name = s.nextLine();
+        Skill skill = new Skill(id, name);
+        JavaIOSkillRepositoryImpl r = new JavaIOSkillRepositoryImpl();
+        r.update(skill);
+    }
 
 }
