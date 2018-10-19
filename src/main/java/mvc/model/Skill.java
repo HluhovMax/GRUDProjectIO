@@ -1,21 +1,19 @@
 package mvc.model;
 
-import java.io.Serializable;
-
 /**
  * Created by Max Hluhov on 14.10.2018.
  */
-public class Skill implements Serializable{
-    private Long ID;
+public class Skill {
+    private Long id;
     private String name;
 
-    public Skill(Long ID, String name) {
-        this.ID = ID;
+    public Skill(Long id, String name) {
+        this.id = id;
         this.name = name;
     }
 
-    public Long getID() {
-        return ID;
+    public Long getId() {
+        return id;
     }
 
     public String getName() {
@@ -24,9 +22,9 @@ public class Skill implements Serializable{
 
     @Override
     public String toString() {
-        return "Skill{" +
-                "ID = " + ID +
-                " name = '" + name + '\'' +
-                '}';
+        return id
+                + ","
+                + name
+                + '/';
     }
 }

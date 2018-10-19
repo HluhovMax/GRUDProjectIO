@@ -9,54 +9,41 @@ public class Developer {
     private Long id;
     private String name;
     private String surName;
+    private String specialty;
     private List<Skill> skills;
+    private Account account;
 
-    public Developer() {
-    }
-
-    public Developer(Long id, String name, String surName, List<Skill> skills) {
+    public Developer(Long id, String name, String surName,
+                     String specialty, List<Skill> skills,
+                     Account account) {
         this.id = id;
         this.name = name;
         this.surName = surName;
+        this.specialty = specialty;
         this.skills = skills;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public String getSurName() {
-        return surName;
+        this.account = account;
     }
 
     public Long getId() {
         return id;
     }
 
-
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public void setSurName(String surName) {
-        this.surName = surName;
-    }
-
-    public List<Skill> getSkills() {
-        return skills;
-    }
-
-    public void setSkills(List<Skill> skills) {
-        this.skills = skills;
+    public String returnSpecifications() {
+        String specifications = name + ' '
+                + surName + ' '
+                + specialty + ' '
+                + skills + ' '
+                + account;
+        return specifications;
     }
 
     @Override
     public String toString() {
-        return id +", "+ name +" "+ surName +" "+ skills;
+        return id + ","
+                + name + ' '
+                + surName + ' '
+                + specialty + ' '
+                + skills + ' '
+                + account;
     }
 }

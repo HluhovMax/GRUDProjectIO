@@ -18,12 +18,11 @@ public class JavaIOSkillRepositoryImpl implements SkillRepository {
 
     @Override
     public void save(Skill skill) throws IOException {
-        String skills = Long.toString(skill.getID()) + ","
-                + skill.getName() + "/";
+        String skil = skill.toString();
         ArrayList<String> arr = readLines(file);
-        arr.add(skills);
+        arr.add(skil);
         try (FileWriter fw = new FileWriter(file, true)) {
-            fw.write(skills + "\n");
+            fw.write(skil + "\n");
         } catch (IOException e) {
             System.out.println("IO exception: " + e);
         }
@@ -57,9 +56,7 @@ public class JavaIOSkillRepositoryImpl implements SkillRepository {
                     skill = new Skill(idi, name);
                     return skill;
                 }//correct work
-
             }
-
         } catch (IOException e) {
             System.out.println(e);
         }
@@ -67,7 +64,7 @@ public class JavaIOSkillRepositoryImpl implements SkillRepository {
     }
 
     public void update(Skill skill) {
-        Long id = skill.getID();
+        Long id = skill.getId();
         String fileToString;
         String arr[];
         List<String> list = new ArrayList<>();
@@ -83,7 +80,7 @@ public class JavaIOSkillRepositoryImpl implements SkillRepository {
                 String record[] = arr[i].split(",");
                 Long recordId = Long.valueOf(record[0]);
                 if (id.equals(recordId)) {
-                    record[1] = skill.getName() + "/";// update point
+                    record[1] = skill.getName();// update point
                     arr[i] = Arrays.toString(record);
                     arr[i] = arr[i].substring(1, arr[i].length() - 1);
                 }

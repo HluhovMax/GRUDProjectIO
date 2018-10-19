@@ -5,5 +5,18 @@ package mvc.model;
  */
 public class Account {
     private Long id;
+    private String data;
 
+    public Account(Long id, String data) {
+        this.id = id;
+        this.data = data;
+    }
+
+    @Override
+    public String toString() {
+        return id
+                + ", "
+                + data
+                + '/';
+    }
 }

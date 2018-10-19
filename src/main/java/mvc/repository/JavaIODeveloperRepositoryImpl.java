@@ -18,13 +18,13 @@ public class JavaIODeveloperRepositoryImpl implements DeveloperRepository {
 
     @Override
     public void save(Developer developer) throws IOException {
-        String devLine = developer.toString();
-        ArrayList<String> list = readLines(file);
-        list.add(devLine);
-        try (FileWriter writer = new FileWriter(file, true)) {
-            writer.write(devLine + "\n");
+        String skil = developer .toString();
+        ArrayList<String> arr = readLines(file);
+        arr.add(skil);
+        try (FileWriter fw = new FileWriter(file, true)) {
+            fw.write(skil + "\n");
         } catch (IOException e) {
-            System.out.println(e.getMessage());
+            System.out.println("IO exception: " + e);
         }
     }
 
@@ -44,32 +44,57 @@ public class JavaIODeveloperRepositoryImpl implements DeveloperRepository {
             for (int i = 0; i < arr.length; i++) {
                 String[] recordLine = arr[i].split(",");
                 Long idi = Long.valueOf(recordLine[0]);
-                String name = String.valueOf(recordLine[1]);
                 if (id.equals(idi)) {
                     recordLine[0] = "";
                     recordLine[1] = "";
+                    arr[i] = Arrays.toString(recordLine);
+                    arr[i] = "removed";
                 }//correct work
-                arr[i] = Arrays.toString(recordLine);
             }
-            try (FileWriter wr = new FileWriter(file)) {
-                wr.write("");
-            }
-            for (int i = 0; i < arr.length; i++) {
-                arr[i] = arr[i].substring(1, arr[i].length() - 1);
-                try (FileWriter writer = new FileWriter(file, true)) {
-                    writer.write(arr[i] + "\n");
-                } catch (IOException e) {
-                    System.out.println(e.getMessage());
+            List<String> list = new ArrayList<>(Arrays.asList(arr));
+            list.remove("removed");
+            try (FileWriter writer = new FileWriter(file)) {
+                for (String s : list) {
+                    writer.write(s + "\n");
                 }
             }
-        }catch(IOException e){
-            System.out.println(e);
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
         }
     }
 
     @Override
     public void update(Developer developer) throws IOException {
-
+        Long id = developer.getId();
+        String fileToString;
+        String arr[];
+        List<String> list = new ArrayList<>();
+        try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
+            while ((fileToString = reader.readLine()) != null) {
+                fileToString = fileToString.trim();
+                if ((fileToString.length()) != 0) {
+                    list.add(fileToString);
+                }
+            }
+            arr = list.toArray(new String[list.size()]);
+            for (int i = 0; i < arr.length; i++) {
+                String record[] = arr[i].split(",");
+                Long recordId = Long.valueOf(record[0]);
+                if (id.equals(recordId)) {
+                    record[1] = developer.returnSpecifications() ;// update point
+                    arr[i] = Arrays.toString(record);
+                    arr[i] = arr[i].substring(1, arr[i].length() - 1);
+                }
+            }
+            list = new ArrayList<>(Arrays.asList(arr));
+            try (FileWriter writer = new FileWriter(file)) {
+                for (String s : list) {
+                    writer.write(s + "\n");
+                }
+            }
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
+        }
     }
 
     @Override
