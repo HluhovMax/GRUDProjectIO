@@ -1,5 +1,6 @@
 package mvc;
 
+import mvc.model.Skill;
 import mvc.repository.JavaIOSkillRepositoryImpl;
 
 import java.io.IOException;
@@ -9,7 +10,8 @@ import java.io.IOException;
  */
 public class MainTest {
     public static void main(String[] args) throws IOException {
+        Skill skill = new Skill(3L, "maven");
         JavaIOSkillRepositoryImpl r = new JavaIOSkillRepositoryImpl();
-        r.delete(2L);
+        r.getAll();
     }
 }

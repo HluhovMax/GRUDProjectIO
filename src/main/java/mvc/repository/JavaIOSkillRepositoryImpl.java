@@ -23,7 +23,7 @@ public class JavaIOSkillRepositoryImpl implements SkillRepository {
         ArrayList<String> arr = readLines(file);
         arr.add(skills);
         try (FileWriter fw = new FileWriter(file, true)) {
-            fw.write("\n" + skills + "\n");
+            fw.write(skills + "\n");
         } catch (IOException e) {
             System.out.println("IO exception: " + e);
         }
@@ -84,18 +84,15 @@ public class JavaIOSkillRepositoryImpl implements SkillRepository {
                 Long recordId = Long.valueOf(record[0]);
                 if (id.equals(recordId)) {
                     record[1] = skill.getName() + "/";// update point
+                    arr[i] = Arrays.toString(record);
+                    arr[i] = arr[i].substring(1, arr[i].length() - 1);
                 }
-                arr[i] = Arrays.toString(record);
+                arr[i] = arr[i].replaceAll("\\s+", "");
             }
-            try (FileWriter wr = new FileWriter(file)) {
-                wr.write("");
-            }
-            for (int i = 0; i < arr.length; i++) {
-                arr[i] = arr[i].substring(1, arr[i].length() - 1);
-                try (FileWriter writer = new FileWriter(file, true)) {
-                    writer.write(arr[i] + "\n");
-                } catch (IOException e) {
-                    System.out.println(e.getMessage());
+            list = new ArrayList<>(Arrays.asList(arr));
+            try (FileWriter writer = new FileWriter(file)) {
+                for (String s : list) {
+                    writer.write(s + "\n");
                 }
             }
         } catch (IOException e) {
