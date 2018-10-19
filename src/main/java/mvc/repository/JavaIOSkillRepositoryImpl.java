@@ -80,7 +80,7 @@ public class JavaIOSkillRepositoryImpl implements SkillRepository {
                 String record[] = arr[i].split(",");
                 Long recordId = Long.valueOf(record[0]);
                 if (id.equals(recordId)) {
-                    record[1] = skill.getName();// update point
+                    record[1] = skill.getName() + '/';// update point
                     arr[i] = Arrays.toString(record);
                     arr[i] = arr[i].substring(1, arr[i].length() - 1);
                 }

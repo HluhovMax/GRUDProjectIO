@@ -81,9 +81,7 @@ public class JavaIODeveloperRepositoryImpl implements DeveloperRepository {
                 String record[] = arr[i].split(",");
                 Long recordId = Long.valueOf(record[0]);
                 if (id.equals(recordId)) {
-                    record[1] = developer.returnSpecifications() ;// update point
-                    arr[i] = Arrays.toString(record);
-                    arr[i] = arr[i].substring(1, arr[i].length() - 1);
+                    arr[i] = developer.toString();
                 }
             }
             list = new ArrayList<>(Arrays.asList(arr));
