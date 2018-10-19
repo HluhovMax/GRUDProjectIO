@@ -15,4 +15,6 @@ public interface SkillRepository {
     public void update(Skill skill) throws IOException;
 
     public void getAll() throws IOException;
+
+    public void  delete(Long id) throws IOException;
 }

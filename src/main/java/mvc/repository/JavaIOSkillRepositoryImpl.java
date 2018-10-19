@@ -121,4 +121,45 @@ public class JavaIOSkillRepositoryImpl implements SkillRepository {
             }
         }else System.out.println("File is empty!");
     }
-}
+
+    @Override
+    public void delete(Long id) throws IOException {
+        Skill skill;
+        String fileTostring;
+        String[] arr;
+        List<String> items = new ArrayList<>();
+        try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
+            while ((fileTostring = reader.readLine()) != null) {
+                fileTostring = fileTostring.trim();
+                if ((fileTostring.length()) != 0) {
+                    items.add(fileTostring);
+                }
+            }
+            arr = items.toArray(new String[items.size()]);
+            for (int i = 0; i < arr.length; i++) {
+                String[] recordLine = arr[i].split(",");
+                Long idi = Long.valueOf(recordLine[0]);
+                String name = String.valueOf(recordLine[1]);
+                if (id.equals(idi)) {
+                    recordLine[0] = "";
+                    recordLine[1] = "";
+                }//correct work
+                arr[i] = Arrays.toString(recordLine);
+            }
+            try (FileWriter wr = new FileWriter(file)) {
+                wr.write("");
+            }
+            for (int i = 0; i < arr.length; i++) {
+                arr[i] = arr[i].substring(1, arr[i].length() - 1);
+                try (FileWriter writer = new FileWriter(file, true)) {
+                    writer.write(arr[i] + "\n");
+                } catch (IOException e) {
+                    System.out.println(e.getMessage());
+                }
+            }
+            }catch(IOException e){
+                System.out.println(e);
+            }
+        }
+    }
+

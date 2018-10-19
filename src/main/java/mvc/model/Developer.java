@@ -57,6 +57,6 @@ public class Developer {
 
     @Override
     public String toString() {
-        return id +" "+ name +" "+ surName +" "+ skills;
+        return id +", "+ name +" "+ surName +" "+ skills;
     }
 }
