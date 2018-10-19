@@ -13,10 +13,12 @@ import java.util.List;
  * Created by Max Hluhov on 14.10.2018.
  */
 public class JavaIOSkillRepositoryImpl implements SkillRepository {
+
     private File file = new File("src\\main\\resources\\files\\skills.txt");
+
     @Override
     public void save(Skill skill) throws IOException {
-        String skills = Long.toString(skill.getID())+","
+        String skills = Long.toString(skill.getID()) + ","
                 + skill.getName() + "/";
         ArrayList<String> arr = readLines(file);
         arr.add(skills);
@@ -68,7 +70,7 @@ public class JavaIOSkillRepositoryImpl implements SkillRepository {
     public void update(Skill skill) {
         Long id = skill.getID();
         String fileToString;
-        String arr[] = new String[0];
+        String arr[];
         List<String> list = new ArrayList<>();
         try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
             while ((fileToString = reader.readLine()) != null) {
@@ -100,5 +102,24 @@ public class JavaIOSkillRepositoryImpl implements SkillRepository {
         } catch (IOException e) {
             System.out.println(e.getMessage());
         }
+    }
+
+    @Override
+    public void getAll() throws IOException {
+        String fileTostring;
+        List<String> items = new ArrayList<>();
+        try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
+            while ((fileTostring = reader.readLine()) != null) {
+                fileTostring = fileTostring.trim();
+                if ((fileTostring.length()) != 0) {
+                    items.add(fileTostring);
+                }
+            }
+        }
+        if (items != null) {
+            for (String s : items) {
+                System.out.println(s);
+            }
+        }else System.out.println("File is empty!");
     }
 }

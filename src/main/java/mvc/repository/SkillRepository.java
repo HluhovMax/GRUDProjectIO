@@ -9,4 +9,10 @@ import java.io.IOException;
  */
 public interface SkillRepository {
     public void save(Skill skill) throws IOException;
+
+    public Skill delete(Long id) throws IOException;
+
+    public void update(Skill skill) throws IOException;
+
+    public void getAll() throws IOException;
 }
