@@ -26,7 +26,7 @@ public class Skill implements Serializable{
     public String toString() {
         return "Skill{" +
                 "ID = " + ID +
-                ", name = '" + name + '\'' +
+                " name = '" + name + '\'' +
                 '}';
     }
 }

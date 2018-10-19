@@ -10,7 +10,7 @@ import java.io.IOException;
 public interface DeveloperRepository {
     public void save(Developer developer) throws IOException;
 
-    public Developer delete(Long id) throws IOException;
+    public void delete(Long id) throws IOException;
 
     public void update(Developer developer) throws IOException;
 

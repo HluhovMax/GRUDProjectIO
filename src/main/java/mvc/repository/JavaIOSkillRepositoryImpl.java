@@ -93,7 +93,7 @@ public class JavaIOSkillRepositoryImpl implements SkillRepository {
             for (int i = 0; i < arr.length; i++) {
                 arr[i] = arr[i].substring(1, arr[i].length() - 1);
                 try (FileWriter writer = new FileWriter(file, true)) {
-                    writer.write(arr[i]);
+                    writer.write(arr[i] + "\n");
                 } catch (IOException e) {
                     System.out.println(e.getMessage());
                 }
@@ -119,12 +119,11 @@ public class JavaIOSkillRepositoryImpl implements SkillRepository {
             for (String s : items) {
                 System.out.println(s);
             }
-        }else System.out.println("File is empty!");
+        } else System.out.println("File is empty!");
     }
 
     @Override
     public void delete(Long id) throws IOException {
-        Skill skill;
         String fileTostring;
         String[] arr;
         List<String> items = new ArrayList<>();
@@ -139,27 +138,23 @@ public class JavaIOSkillRepositoryImpl implements SkillRepository {
             for (int i = 0; i < arr.length; i++) {
                 String[] recordLine = arr[i].split(",");
                 Long idi = Long.valueOf(recordLine[0]);
-                String name = String.valueOf(recordLine[1]);
                 if (id.equals(idi)) {
                     recordLine[0] = "";
                     recordLine[1] = "";
+                    arr[i] = Arrays.toString(recordLine);
+                    arr[i] = "removed";
                 }//correct work
-                arr[i] = Arrays.toString(recordLine);
             }
-            try (FileWriter wr = new FileWriter(file)) {
-                wr.write("");
-            }
-            for (int i = 0; i < arr.length; i++) {
-                arr[i] = arr[i].substring(1, arr[i].length() - 1);
-                try (FileWriter writer = new FileWriter(file, true)) {
-                    writer.write(arr[i] + "\n");
-                } catch (IOException e) {
-                    System.out.println(e.getMessage());
+            List<String> list = new ArrayList<>(Arrays.asList(arr));
+            list.remove("removed");
+            try (FileWriter writer = new FileWriter(file)) {
+                for (String s : list) {
+                    writer.write(s + "\n");
                 }
             }
-            }catch(IOException e){
-                System.out.println(e);
-            }
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
         }
     }
+}
 

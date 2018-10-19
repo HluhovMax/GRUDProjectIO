@@ -10,7 +10,7 @@ import java.io.IOException;
 public interface AccountRepository {
     public void save(Account account) throws IOException;
 
-    public Account delete(Long id) throws IOException;
+    public void delete(Long id) throws IOException;
 
     public void update(Account account) throws IOException;
 

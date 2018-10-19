@@ -29,8 +29,8 @@ public class JavaIOAccountRepositoryImpl implements AccountRepository {
     }
 
     @Override
-    public Account delete(Long id) throws IOException {
-        return null;
+    public void delete(Long id) throws IOException {
+
     }
 
     @Override
