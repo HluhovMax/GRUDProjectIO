@@ -1,0 +1,2 @@
+1, 1 Ivan Ivanov [Skill{ID = 1, name = 'java/'}, Skill{ID = 2, name = 'C++/'}, Skill{ID = 3, name = 'js/'}]
+2, 2 Petro Sydorov [Skill{ID = 1, name = 'java/'}, Skill{ID = 2, name = 'C++/'}, Skill{ID = 3, name = 'js/'}]

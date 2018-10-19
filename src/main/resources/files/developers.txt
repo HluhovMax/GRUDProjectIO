@@ -1,0 +1,1 @@
+1 Ivan Ivanov [Skill{ID = 1, name = 'java/'}]

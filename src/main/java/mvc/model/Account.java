@@ -22,9 +22,6 @@ public class Account {
 
     @Override
     public String toString() {
-        return "Account{" +
-                "id=" + id +
-                ", developer=" + developer +
-                '}';
+        return id + ", " + developer;
     }
 }

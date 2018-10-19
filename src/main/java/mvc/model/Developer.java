@@ -1,6 +1,6 @@
 package mvc.model;
 
-import java.util.Set;
+import java.util.List;
 
 /**
  * Created by Max Hluhov on 19.10.2018.
@@ -9,12 +9,12 @@ public class Developer {
     private Long id;
     private String name;
     private String surName;
-    private Set<Skill> skills;
+    private List<Skill> skills;
 
     public Developer() {
     }
 
-    public Developer(Long id, String name, String surName, Set<Skill> skills) {
+    public Developer(Long id, String name, String surName, List<Skill> skills) {
         this.id = id;
         this.name = name;
         this.surName = surName;
@@ -33,9 +33,7 @@ public class Developer {
         return id;
     }
 
-    public Set<Skill> getSkills() {
-        return skills;
-    }
+
 
     public void setId(Long id) {
         this.id = id;
@@ -49,17 +47,16 @@ public class Developer {
         this.surName = surName;
     }
 
-    public void setSkills(Set<Skill> skills) {
+    public List<Skill> getSkills() {
+        return skills;
+    }
+
+    public void setSkills(List<Skill> skills) {
         this.skills = skills;
     }
 
     @Override
     public String toString() {
-        return "Developer{" +
-                "name='" + name + '\'' +
-                ", surName='" + surName + '\'' +
-                ", id=" + id +
-                ", skills=" + skills +
-                '}';
+        return id +" "+ name +" "+ surName +" "+ skills;
     }
 }

@@ -1,7 +1,6 @@
 package mvc.repository;
 
 import mvc.model.Developer;
-import mvc.model.Skill;
 
 import java.io.IOException;
 
@@ -11,9 +10,11 @@ import java.io.IOException;
 public interface DeveloperRepository {
     public void save(Developer developer) throws IOException;
 
-    public Skill delete(Long id) throws IOException;
+    public Developer delete(Long id) throws IOException;
 
     public void update(Developer developer) throws IOException;
 
     public void getAll() throws IOException;
+
+    public Developer getById(Long id) throws IOException;
 }

@@ -36,7 +36,7 @@ public class JavaIOSkillRepositoryImpl implements SkillRepository {
     }
 
 
-    public Skill delete(Long id) {
+    public Skill getById(Long id) {
         Skill skill;
         String fileTostring;
         String[] arr;
@@ -55,7 +55,6 @@ public class JavaIOSkillRepositoryImpl implements SkillRepository {
                 String name = String.valueOf(recordLine[1]);
                 if (id.equals(idi)) {
                     skill = new Skill(idi, name);
-                    System.out.println("deleted skill: " + skill);
                     return skill;
                 }//correct work
 

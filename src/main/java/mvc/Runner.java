@@ -11,7 +11,7 @@ import java.util.Scanner;
  */
 public class Runner {
     public static void run() throws IOException {
-        System.out.println("Enter 1: for OneTimeAdding | 2: for manyTimeAdding | 3: for delete | 4: for update");
+        System.out.println("Enter 1: for OneTimeAdding | 2: for manyTimeAdding | 3: for getById | 4: for update");
         Scanner sc = new Scanner(System.in);
         int i = sc.nextInt();
         switch (i) {
@@ -57,7 +57,7 @@ public class Runner {
         Scanner sc = new Scanner(System.in);
         Long id = sc.nextLong();
         JavaIOSkillRepositoryImpl r = new JavaIOSkillRepositoryImpl();
-        r.delete(id);
+        r.getById(id);
         System.out.println("Entered skill has been deleted.");
     }
 
