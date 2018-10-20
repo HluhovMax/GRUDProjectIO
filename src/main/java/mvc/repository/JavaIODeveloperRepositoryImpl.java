@@ -97,11 +97,48 @@ public class JavaIODeveloperRepositoryImpl implements DeveloperRepository {
 
     @Override
     public void getAll() throws IOException {
-
+        String fileTostring;
+        List<String> items = new ArrayList<>();
+        try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
+            while ((fileTostring = reader.readLine()) != null) {
+                fileTostring = fileTostring.trim();
+                if ((fileTostring.length()) != 0) {
+                    items.add(fileTostring);
+                }
+            }
+        }
+        if (items != null) {
+            for (String s : items) {
+                System.out.println(s);
+            }
+        } else System.out.println("File is empty!");
     }
 
     @Override
-    public Developer getById(Long id) throws IOException {
+    public String getById(Long id) throws IOException {
+        String fileTostring;
+        String[] arr;
+        List<String> items = new ArrayList<>();
+        try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
+            while ((fileTostring = reader.readLine()) != null) {
+                fileTostring = fileTostring.trim();
+                if ((fileTostring.length()) != 0) {
+                    items.add(fileTostring);
+                }
+            }
+            arr = items.toArray(new String[items.size()]);
+            for (int i = 0; i < arr.length; i++) {
+                String line = arr[i].replaceFirst(",", ":");
+                String[] recordLine = line.split(":");
+                Long idi = Long.valueOf(recordLine[0]);
+                if (id.equals(idi)) {
+                    String dev = arr[i];
+                    return dev;
+                }
+            }
+        } catch (IOException e) {
+            System.out.println(e);
+        }
         return null;
     }
 

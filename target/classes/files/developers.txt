@@ -1,3 +1,2 @@
-1002,Petro Ivanov javaDev [1,java//, 2,sql//, 3,maven//, 4,js//, 5,angular2//] 1002, someData.txt//
 1003,Vasya Smith C++Dev [1,frontEnd/, 2,C++/] 1003, someData.txt/
 1004,Mary Smith C++Dev [1,frontEnd/, 2,C++/] 1004, someData.txt/

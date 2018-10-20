@@ -1,4 +1,2 @@
-Into JavaIODeveloperRepositoryImpl:
-    1) напилить методы getAll() и getById(Long id);
 Into JavaIOAccountRepositoryImpl:
     1) напилить все пять методов;

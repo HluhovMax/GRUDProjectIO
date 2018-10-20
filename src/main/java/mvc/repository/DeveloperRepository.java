@@ -16,5 +16,5 @@ public interface DeveloperRepository {
 
     public void getAll() throws IOException;
 
-    public Developer getById(Long id) throws IOException;
+    public String getById(Long id) throws IOException;
 }
