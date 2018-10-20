@@ -12,6 +12,14 @@ public class Account {
         this.data = data;
     }
 
+    public Long getId() {
+        return id;
+    }
+
+    public String getData() {
+        return data;
+    }
+
     @Override
     public String toString() {
         return id

@@ -1,2 +1,0 @@
-Into JavaIOAccountRepositoryImpl:
-    1) напилить все пять методов;

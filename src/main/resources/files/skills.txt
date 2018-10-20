@@ -1,6 +1,0 @@
-1,java/
-2,sql/
-3,maven/
-4,react/
-5,angular2/
-6,Git/

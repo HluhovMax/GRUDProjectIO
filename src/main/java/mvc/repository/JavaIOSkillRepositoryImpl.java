@@ -64,7 +64,6 @@ public class JavaIOSkillRepositoryImpl implements SkillRepository {
     }
 
     public void update(Skill skill) {
-        Long id = skill.getId();
         String fileToString;
         String arr[];
         List<String> list = new ArrayList<>();
@@ -79,8 +78,8 @@ public class JavaIOSkillRepositoryImpl implements SkillRepository {
             for (int i = 0; i < arr.length; i++) {
                 String record[] = arr[i].split(",");
                 Long recordId = Long.valueOf(record[0]);
-                if (id.equals(recordId)) {
-                    record[1] = skill.getName() + '/';// update point
+                if (skill.getId().equals(recordId)) {
+                    record[1] = skill.getName() + '/';
                     arr[i] = Arrays.toString(record);
                     arr[i] = arr[i].substring(1, arr[i].length() - 1);
                 }

@@ -2,13 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="205c4c21-008b-4a08-85af-2d1a3e94741c" name="Default" comment="commit">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/mvc/repository/JavaIODeveloperRepositoryImpl.class" afterPath="$PROJECT_DIR$/target/classes/mvc/repository/JavaIODeveloperRepositoryImpl.class" />
+      <change type="DELETED" beforePath="C:\Users\Max Hluhov\IdeaProjects\GRUDProjectIO\src\main\resources\files\TASK_LIST.txt" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\Max Hluhov\IdeaProjects\GRUDProjectIO\target\classes\files\TASK_LIST.txt" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/mvc/model/Account.class" afterPath="$PROJECT_DIR$/target/classes/mvc/model/Account.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/mvc/repository/JavaIOAccountRepositoryImpl.class" afterPath="$PROJECT_DIR$/target/classes/mvc/repository/JavaIOAccountRepositoryImpl.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/mvc/repository/JavaIOSkillRepositoryImpl.class" afterPath="$PROJECT_DIR$/target/classes/mvc/repository/JavaIOSkillRepositoryImpl.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/mvc/MainTest.class" afterPath="$PROJECT_DIR$/target/classes/mvc/MainTest.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/mvc/repository/DeveloperRepository.java" afterPath="$PROJECT_DIR$/src/main/java/mvc/repository/DeveloperRepository.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/mvc/repository/JavaIODeveloperRepositoryImpl.java" afterPath="$PROJECT_DIR$/src/main/java/mvc/repository/JavaIODeveloperRepositoryImpl.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/mvc/model/Account.java" afterPath="$PROJECT_DIR$/src/main/java/mvc/model/Account.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/mvc/repository/JavaIOAccountRepositoryImpl.java" afterPath="$PROJECT_DIR$/src/main/java/mvc/repository/JavaIOAccountRepositoryImpl.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/mvc/repository/JavaIOSkillRepositoryImpl.java" afterPath="$PROJECT_DIR$/src/main/java/mvc/repository/JavaIOSkillRepositoryImpl.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/mvc/MainTest.java" afterPath="$PROJECT_DIR$/src/main/java/mvc/MainTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/files/TASK_LIST.txt" afterPath="$PROJECT_DIR$/target/classes/files/TASK_LIST.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/files/developers.txt" afterPath="$PROJECT_DIR$/target/classes/files/developers.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/files/accounts.txt" afterPath="$PROJECT_DIR$/src/main/resources/files/accounts.txt" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="GRUDProjectIO.iws" />
@@ -39,14 +43,14 @@
       <file leaf-file-name="JavaIOSkillRepositoryImpl.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/mvc/repository/JavaIOSkillRepositoryImpl.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="977" max-vertical-offset="1755">
-              <caret line="62" column="20" selection-start-line="62" selection-start-column="20" selection-end-line="62" selection-end-column="20" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="1125" max-vertical-offset="1890">
+              <caret line="95" column="9" selection-start-line="95" selection-start-column="9" selection-end-line="95" selection-end-column="9" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="docComment;class#JavaIOSkillRepositoryImpl#0" expanded="false" />
                 <element signature="method#save#0;class#JavaIOSkillRepositoryImpl#0" expanded="false" />
                 <element signature="method#readLines#0;class#JavaIOSkillRepositoryImpl#0" expanded="false" />
-                <element signature="method#update#0;class#JavaIOSkillRepositoryImpl#0" expanded="false" />
+                <element signature="method#getById#0;class#JavaIOSkillRepositoryImpl#0" expanded="false" />
                 <element signature="method#getAll#0;class#JavaIOSkillRepositoryImpl#0" expanded="false" />
                 <element signature="method#delete#0;class#JavaIOSkillRepositoryImpl#0" expanded="false" />
               </folding>
@@ -54,70 +58,41 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="TASK_LIST.txt" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/files/TASK_LIST.txt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="270">
-              <caret line="3" column="33" selection-start-line="3" selection-start-column="33" selection-end-line="3" selection-end-column="33" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="JavaIODeveloperRepositoryImpl.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/mvc/repository/JavaIODeveloperRepositoryImpl.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="774" max-vertical-offset="1890">
-              <caret line="134" column="40" selection-start-line="134" selection-start-column="40" selection-end-line="134" selection-end-column="40" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="method#save#0;class#JavaIODeveloperRepositoryImpl#0" expanded="false" />
-                <element signature="method#delete#0;class#JavaIODeveloperRepositoryImpl#0" expanded="false" />
-                <element signature="method#update#0;class#JavaIODeveloperRepositoryImpl#0" expanded="false" />
-                <element signature="method#getAll#0;class#JavaIODeveloperRepositoryImpl#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="DeveloperRepository.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/mvc/repository/DeveloperRepository.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="648">
-              <caret line="18" column="33" selection-start-line="18" selection-start-column="33" selection-end-line="18" selection-end-column="33" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Developer.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/mvc/model/Developer.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="666" max-vertical-offset="1431">
-              <caret line="35" column="25" selection-start-line="35" selection-start-column="25" selection-end-line="35" selection-end-column="25" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="JavaIOAccountRepositoryImpl.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/mvc/repository/JavaIOAccountRepositoryImpl.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="135" max-vertical-offset="1134">
-              <caret line="14" column="40" selection-start-line="14" selection-start-column="40" selection-end-line="14" selection-end-column="40" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="258" max-vertical-offset="1755">
+              <caret line="82" column="49" selection-start-line="82" selection-start-column="49" selection-end-line="82" selection-end-column="49" />
               <folding>
                 <element signature="method#save#0;class#JavaIOAccountRepositoryImpl#0" expanded="false" />
+                <element signature="method#delete#0;class#JavaIOAccountRepositoryImpl#0" expanded="false" />
+                <element signature="method#getAll#0;class#JavaIOAccountRepositoryImpl#0" expanded="false" />
+                <element signature="method#getById#0;class#JavaIOAccountRepositoryImpl#0" expanded="false" />
                 <element signature="method#readLines#0;class#JavaIOAccountRepositoryImpl#0" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MainTest.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Account.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/mvc/model/Account.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="5" max-vertical-offset="972">
+              <caret line="14" column="25" selection-start-line="14" selection-start-column="25" selection-end-line="14" selection-end-column="25" />
+              <folding>
+                <element signature="e#285#286#0" expanded="true" />
+                <element signature="e#316#317#0" expanded="true" />
+                <element signature="e#343#344#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MainTest.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/mvc/MainTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="1.4638554" vertical-offset="0" max-vertical-offset="756">
-              <caret line="18" column="32" selection-start-line="18" selection-start-column="32" selection-end-line="18" selection-end-column="32" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="621">
+              <caret line="14" column="27" selection-start-line="14" selection-start-column="27" selection-end-line="14" selection-end-column="27" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -125,11 +100,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="developers.txt" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/files/developers.txt">
+      <file leaf-file-name="accounts.txt" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/files/accounts.txt">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="216">
-              <caret line="1" column="36" selection-start-line="1" selection-start-column="36" selection-end-line="1" selection-end-column="36" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="345">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -155,18 +130,18 @@
         <option value="$PROJECT_DIR$/src/main/java/mvc/TestMain.java" />
         <option value="$PROJECT_DIR$/src/main/java/mvc/repository/SkillRepository.java" />
         <option value="$PROJECT_DIR$/src/main/java/mvc/repository/AccountRepository.java" />
-        <option value="$PROJECT_DIR$/src/main/java/mvc/repository/JavaIOAccountRepositoryImpl.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/files/accounts.txt" />
         <option value="$PROJECT_DIR$/src/main/java/mvc/model/Skill.java" />
         <option value="$PROJECT_DIR$/src/main/java/mvc/AppRunner.java" />
-        <option value="$PROJECT_DIR$/src/main/java/mvc/model/Account.java" />
         <option value="$PROJECT_DIR$/src/main/java/mvc/model/Developer.java" />
-        <option value="$PROJECT_DIR$/src/main/java/mvc/repository/JavaIOSkillRepositoryImpl.java" />
         <option value="$PROJECT_DIR$/src/main/resources/files/skills.txt" />
-        <option value="$PROJECT_DIR$/src/main/resources/files/TASK_LIST.txt" />
         <option value="$PROJECT_DIR$/src/main/resources/files/developers.txt" />
         <option value="$PROJECT_DIR$/src/main/java/mvc/repository/DeveloperRepository.java" />
         <option value="$PROJECT_DIR$/src/main/java/mvc/repository/JavaIODeveloperRepositoryImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/files/TASK_LIST.txt" />
+        <option value="$PROJECT_DIR$/src/main/java/mvc/repository/JavaIOSkillRepositoryImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/mvc/model/Account.java" />
+        <option value="$PROJECT_DIR$/src/main/java/mvc/repository/JavaIOAccountRepositoryImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/files/accounts.txt" />
         <option value="$PROJECT_DIR$/src/main/java/mvc/MainTest.java" />
       </list>
     </option>
@@ -737,12 +712,12 @@
       <workItem from="1539691381958" duration="24880000" />
       <workItem from="1539867818328" duration="19109000" />
       <workItem from="1539951514219" duration="29285000" />
-      <workItem from="1540027322431" duration="8559000" />
+      <workItem from="1540027322431" duration="11887000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="119229000" />
+    <option name="totallyTimeSpent" value="122557000" />
   </component>
   <component name="TodoView" selected-index="0">
     <todo-panel id="selected-file">
@@ -766,7 +741,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1366" height="768" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -779,7 +754,7 @@
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3295129" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.46561605" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.46561605" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32808024" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24962178" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -855,14 +830,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/resources/files/TASK_LIST.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="81" max-vertical-offset="270">
-          <caret line="3" column="33" selection-start-line="3" selection-start-column="33" selection-end-line="3" selection-end-column="33" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/mvc/repository/JavaIODeveloperRepositoryImpl.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="234" max-vertical-offset="1107">
@@ -915,7 +882,7 @@
             <element signature="docComment;class#JavaIOSkillRepositoryImpl#0" expanded="false" />
             <element signature="method#save#0;class#JavaIOSkillRepositoryImpl#0" expanded="false" />
             <element signature="method#readLines#0;class#JavaIOSkillRepositoryImpl#0" expanded="false" />
-            <element signature="method#update#0;class#JavaIOSkillRepositoryImpl#0" expanded="false" />
+            <element signature="method#getById#0;class#JavaIOSkillRepositoryImpl#0" expanded="false" />
             <element signature="method#getAll#0;class#JavaIOSkillRepositoryImpl#0" expanded="false" />
             <element signature="method#delete#0;class#JavaIOSkillRepositoryImpl#0" expanded="false" />
           </folding>
@@ -963,7 +930,7 @@
             <element signature="docComment;class#JavaIOSkillRepositoryImpl#0" expanded="false" />
             <element signature="method#save#0;class#JavaIOSkillRepositoryImpl#0" expanded="false" />
             <element signature="method#readLines#0;class#JavaIOSkillRepositoryImpl#0" expanded="false" />
-            <element signature="method#update#0;class#JavaIOSkillRepositoryImpl#0" expanded="false" />
+            <element signature="method#getById#0;class#JavaIOSkillRepositoryImpl#0" expanded="false" />
             <element signature="method#getAll#0;class#JavaIOSkillRepositoryImpl#0" expanded="false" />
             <element signature="method#delete#0;class#JavaIOSkillRepositoryImpl#0" expanded="false" />
           </folding>
@@ -1014,7 +981,7 @@
             <element signature="docComment;class#JavaIOSkillRepositoryImpl#0" expanded="false" />
             <element signature="method#save#0;class#JavaIOSkillRepositoryImpl#0" expanded="false" />
             <element signature="method#readLines#0;class#JavaIOSkillRepositoryImpl#0" expanded="false" />
-            <element signature="method#update#0;class#JavaIOSkillRepositoryImpl#0" expanded="false" />
+            <element signature="method#getById#0;class#JavaIOSkillRepositoryImpl#0" expanded="false" />
             <element signature="method#getAll#0;class#JavaIOSkillRepositoryImpl#0" expanded="false" />
             <element signature="method#delete#0;class#JavaIOSkillRepositoryImpl#0" expanded="false" />
           </folding>
@@ -1044,7 +1011,7 @@
             <element signature="docComment;class#JavaIOSkillRepositoryImpl#0" expanded="false" />
             <element signature="method#save#0;class#JavaIOSkillRepositoryImpl#0" expanded="false" />
             <element signature="method#readLines#0;class#JavaIOSkillRepositoryImpl#0" expanded="false" />
-            <element signature="method#update#0;class#JavaIOSkillRepositoryImpl#0" expanded="false" />
+            <element signature="method#getById#0;class#JavaIOSkillRepositoryImpl#0" expanded="false" />
             <element signature="method#getAll#0;class#JavaIOSkillRepositoryImpl#0" expanded="false" />
             <element signature="method#delete#0;class#JavaIOSkillRepositoryImpl#0" expanded="false" />
           </folding>
@@ -1074,7 +1041,7 @@
             <element signature="docComment;class#JavaIOSkillRepositoryImpl#0" expanded="false" />
             <element signature="method#save#0;class#JavaIOSkillRepositoryImpl#0" expanded="false" />
             <element signature="method#readLines#0;class#JavaIOSkillRepositoryImpl#0" expanded="false" />
-            <element signature="method#update#0;class#JavaIOSkillRepositoryImpl#0" expanded="false" />
+            <element signature="method#getById#0;class#JavaIOSkillRepositoryImpl#0" expanded="false" />
             <element signature="method#getAll#0;class#JavaIOSkillRepositoryImpl#0" expanded="false" />
             <element signature="method#delete#0;class#JavaIOSkillRepositoryImpl#0" expanded="false" />
           </folding>
@@ -1104,7 +1071,7 @@
             <element signature="docComment;class#JavaIOSkillRepositoryImpl#0" expanded="false" />
             <element signature="method#save#0;class#JavaIOSkillRepositoryImpl#0" expanded="false" />
             <element signature="method#readLines#0;class#JavaIOSkillRepositoryImpl#0" expanded="false" />
-            <element signature="method#update#0;class#JavaIOSkillRepositoryImpl#0" expanded="false" />
+            <element signature="method#getById#0;class#JavaIOSkillRepositoryImpl#0" expanded="false" />
             <element signature="method#getAll#0;class#JavaIOSkillRepositoryImpl#0" expanded="false" />
             <element signature="method#delete#0;class#JavaIOSkillRepositoryImpl#0" expanded="false" />
           </folding>
@@ -1141,7 +1108,7 @@
             <element signature="docComment;class#JavaIOSkillRepositoryImpl#0" expanded="false" />
             <element signature="method#save#0;class#JavaIOSkillRepositoryImpl#0" expanded="false" />
             <element signature="method#readLines#0;class#JavaIOSkillRepositoryImpl#0" expanded="false" />
-            <element signature="method#update#0;class#JavaIOSkillRepositoryImpl#0" expanded="false" />
+            <element signature="method#getById#0;class#JavaIOSkillRepositoryImpl#0" expanded="false" />
             <element signature="method#getAll#0;class#JavaIOSkillRepositoryImpl#0" expanded="false" />
             <element signature="method#delete#0;class#JavaIOSkillRepositoryImpl#0" expanded="false" />
           </folding>
@@ -1220,20 +1187,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/files/accounts.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="162">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/mvc/model/Account.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.67761195" vertical-offset="5" max-vertical-offset="756">
-          <caret line="17" column="21" selection-start-line="17" selection-start-column="21" selection-end-line="17" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/files/skills.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="324">
@@ -1254,33 +1207,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/files/TASK_LIST.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="270">
-          <caret line="3" column="33" selection-start-line="3" selection-start-column="33" selection-end-line="3" selection-end-column="33" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/mvc/repository/JavaIOSkillRepositoryImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="977" max-vertical-offset="1755">
-          <caret line="62" column="20" selection-start-line="62" selection-start-column="20" selection-end-line="62" selection-end-column="20" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="docComment;class#JavaIOSkillRepositoryImpl#0" expanded="false" />
-            <element signature="method#save#0;class#JavaIOSkillRepositoryImpl#0" expanded="false" />
-            <element signature="method#readLines#0;class#JavaIOSkillRepositoryImpl#0" expanded="false" />
-            <element signature="method#update#0;class#JavaIOSkillRepositoryImpl#0" expanded="false" />
-            <element signature="method#getAll#0;class#JavaIOSkillRepositoryImpl#0" expanded="false" />
-            <element signature="method#delete#0;class#JavaIOSkillRepositoryImpl#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/files/developers.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="216">
+        <state vertical-scroll-proportion="0.040298507" vertical-offset="0" max-vertical-offset="670">
           <caret line="1" column="36" selection-start-line="1" selection-start-column="36" selection-end-line="1" selection-end-column="36" />
           <folding />
         </state>
@@ -1289,9 +1218,25 @@
         <state />
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/mvc/repository/DeveloperRepository.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.6447761" vertical-offset="0" max-vertical-offset="670">
+          <caret line="18" column="33" selection-start-line="18" selection-start-column="33" selection-end-line="18" selection-end-column="33" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/mvc/model/Developer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.33582088" vertical-offset="666" max-vertical-offset="1431">
+          <caret line="35" column="25" selection-start-line="35" selection-start-column="25" selection-end-line="35" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/mvc/repository/JavaIODeveloperRepositoryImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="774" max-vertical-offset="1890">
+        <state vertical-scroll-proportion="1.9041096" vertical-offset="45" max-vertical-offset="1890">
           <caret line="134" column="40" selection-start-line="134" selection-start-column="40" selection-end-line="134" selection-end-column="40" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -1303,40 +1248,63 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/mvc/repository/DeveloperRepository.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/mvc/repository/JavaIOSkillRepositoryImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="648">
-          <caret line="18" column="33" selection-start-line="18" selection-start-column="33" selection-end-line="18" selection-end-column="33" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/mvc/model/Developer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="720" max-vertical-offset="1485">
-          <caret line="35" column="25" selection-start-line="35" selection-start-column="25" selection-end-line="35" selection-end-column="25" />
-          <folding />
+        <state vertical-scroll-proportion="0.0" vertical-offset="1125" max-vertical-offset="1890">
+          <caret line="95" column="9" selection-start-line="95" selection-start-column="9" selection-end-line="95" selection-end-column="9" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="docComment;class#JavaIOSkillRepositoryImpl#0" expanded="false" />
+            <element signature="method#save#0;class#JavaIOSkillRepositoryImpl#0" expanded="false" />
+            <element signature="method#readLines#0;class#JavaIOSkillRepositoryImpl#0" expanded="false" />
+            <element signature="method#getById#0;class#JavaIOSkillRepositoryImpl#0" expanded="false" />
+            <element signature="method#getAll#0;class#JavaIOSkillRepositoryImpl#0" expanded="false" />
+            <element signature="method#delete#0;class#JavaIOSkillRepositoryImpl#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/mvc/repository/JavaIOAccountRepositoryImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="135" max-vertical-offset="1134">
-          <caret line="14" column="40" selection-start-line="14" selection-start-column="40" selection-end-line="14" selection-end-column="40" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="150" max-vertical-offset="1755">
+          <caret line="82" column="49" selection-start-line="82" selection-start-column="49" selection-end-line="82" selection-end-column="49" />
           <folding>
             <element signature="method#save#0;class#JavaIOAccountRepositoryImpl#0" expanded="false" />
+            <element signature="method#delete#0;class#JavaIOAccountRepositoryImpl#0" expanded="false" />
+            <element signature="method#getAll#0;class#JavaIOAccountRepositoryImpl#0" expanded="false" />
+            <element signature="method#getById#0;class#JavaIOAccountRepositoryImpl#0" expanded="false" />
             <element signature="method#readLines#0;class#JavaIOAccountRepositoryImpl#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/mvc/model/Account.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="5" max-vertical-offset="972">
+          <caret line="14" column="25" selection-start-line="14" selection-start-column="25" selection-end-line="14" selection-end-column="25" />
+          <folding>
+            <element signature="e#285#286#0" expanded="true" />
+            <element signature="e#316#317#0" expanded="true" />
+            <element signature="e#343#344#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/mvc/MainTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.4638554" vertical-offset="0" max-vertical-offset="756">
-          <caret line="18" column="32" selection-start-line="18" selection-start-column="32" selection-end-line="18" selection-end-column="32" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="621">
+          <caret line="14" column="27" selection-start-line="14" selection-start-column="27" selection-end-line="14" selection-end-column="27" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/files/accounts.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="162">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>

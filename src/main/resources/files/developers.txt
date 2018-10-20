@@ -1,2 +1,0 @@
-1003,Vasya Smith C++Dev [1,frontEnd/, 2,C++/] 1003, someData.txt/
-1004,Mary Smith C++Dev [1,frontEnd/, 2,C++/] 1004, someData.txt/
