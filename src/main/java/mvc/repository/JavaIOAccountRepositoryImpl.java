@@ -140,7 +140,7 @@ public class JavaIOAccountRepositoryImpl implements AccountRepository {
                 if (id.equals(idi)) {
                     account = new Account(idi, name);
                     return account;
-                }//correct work
+                }
             }
         } catch (IOException e) {
             System.out.println(e);

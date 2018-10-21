@@ -2,6 +2,7 @@ package mvc.repository;
 
 import mvc.model.Account;
 import mvc.model.Developer;
+import mvc.model.Skill;
 
 import java.io.*;
 import java.nio.file.Files;
@@ -19,7 +20,7 @@ public class JavaIODeveloperRepositoryImpl implements DeveloperRepository {
 
     @Override
     public void save(Developer developer) throws IOException {
-        String skil = developer .toString();
+        String skil = developer.toString();
         ArrayList<String> arr = readLines(file);
         arr.add(skil);
         try (FileWriter fw = new FileWriter(file, true)) {
@@ -108,7 +109,32 @@ public class JavaIODeveloperRepositoryImpl implements DeveloperRepository {
                 }
             }
         }
-        return null;
+        List<Developer> developerList = new ArrayList<>();
+        List<Skill> skillList = new ArrayList<>();
+        for (String devLine : items) {
+            devLine = devLine.trim();
+            String[] mass = devLine.split(",");
+            Long id = Long.valueOf(mass[0]);
+            String name = mass[1];
+            String surName = mass[2];
+            String specialty = mass[3];
+            mass[4] = mass[4].substring(2, mass[4].length() - 1);
+            String[] arr = mass[4].split(";");
+            for (int i = 0; i < arr.length; i++) {
+                String[] array = arr[i].split("-");
+                Long idi = Long.valueOf(array[0]);
+                skillList.add(new Skill(idi, array[1]));
+            }
+            Account account = new Account(0L, "");
+            mass[5] = mass[5].trim();
+            String[] a = mass[5].split("-");
+            for (int i = 0; i < a.length; i++) {
+                Long idi = Long.valueOf(a[0]);
+                account = new Account(idi, a[1]);
+            }
+            developerList.add(new Developer(id, name, surName, specialty, skillList, account));
+        }
+        return developerList;
     }
 
     @Override
@@ -124,13 +150,13 @@ public class JavaIODeveloperRepositoryImpl implements DeveloperRepository {
                 }
             }
             arr = items.toArray(new String[items.size()]);
+            Developer developer;
             for (int i = 0; i < arr.length; i++) {
                 String line = arr[i].replaceFirst(",", ":");
                 String[] recordLine = line.split(":");
                 Long idi = Long.valueOf(recordLine[0]);
                 if (id.equals(idi)) {
-                    String dev = arr[i];
-                    return dev;
+                    return null;
                 }
             }
         } catch (IOException e) {
