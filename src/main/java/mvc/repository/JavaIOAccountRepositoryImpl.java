@@ -19,6 +19,7 @@ public class JavaIOAccountRepositoryImpl implements AccountRepository {
     @Override
     public void save(Account account) throws IOException {
         String accountLine = account.toString();
+        accountLine = accountLine.trim();
         ArrayList<String> list = readLines(file);
         list.add(accountLine);
         try (FileWriter writer = new FileWriter(file, true)) {
@@ -49,7 +50,7 @@ public class JavaIOAccountRepositoryImpl implements AccountRepository {
                     recordLine[1] = "";
                     arr[i] = Arrays.toString(recordLine);
                     arr[i] = "removed";
-                }//correct work
+                }
             }
             List<String> list = new ArrayList<>(Arrays.asList(arr));
             list.remove("removed");
@@ -111,9 +112,13 @@ public class JavaIOAccountRepositoryImpl implements AccountRepository {
         }
         List<Account> list = new ArrayList<>();
         for (String s : items) {
+            s = s.trim();
             String[] mass = s.split(",");
             Long id = Long.valueOf(mass[0]);
             String data = mass[1];
+            StringBuilder sb = new StringBuilder(data);
+            sb.deleteCharAt(data.length() - 1);
+            data = sb.toString();
             list.add(new Account(id, data));
         }
         return list;

@@ -1,6 +1,7 @@
 package mvc;
 
-import mvc.repository.JavaIODeveloperRepositoryImpl;
+import mvc.model.Account;
+import mvc.repository.JavaIOAccountRepositoryImpl;
 
 import java.io.IOException;
 
@@ -9,13 +10,9 @@ import java.io.IOException;
  */
 public class AppRunner {
     public static void main(String[] args) throws IOException {
-        JavaIODeveloperRepositoryImpl devR = new JavaIODeveloperRepositoryImpl();
-//        List<Skill> skillList = new ArrayList<>();
-//        skillList.add(new Skill(1L, "java"));
-//        skillList.add(new Skill(2L, "sql"));
-//        skillList.add(new Skill(3L, "maven"));
-//        devR.save(new Developer(1L, "Ivan", "Ivanov", "javaDev",
-//                skillList, new Account(1L, "data.txt")));
-        devR.save(devR.getById(2L));
+        JavaIOAccountRepositoryImpl accR = new JavaIOAccountRepositoryImpl();
+        for (int i = 0; i < 4; i++) {
+            accR.save(new Account(2L, "changed"));
+        }
     }
 }

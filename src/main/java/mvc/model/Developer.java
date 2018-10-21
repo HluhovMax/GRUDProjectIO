@@ -32,10 +32,10 @@ public class Developer {
     @Override
     public String toString() {
         return id + ","
-                + name + ' '
-                + surName + ' '
-                + specialty + ' '
-                + skills + ' '
+                + name + ','
+                + surName + ','
+                + specialty + ','
+                + skills + ','
                 + account;
     }
 }
