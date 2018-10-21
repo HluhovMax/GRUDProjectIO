@@ -97,7 +97,7 @@ public class JavaIOSkillRepositoryImpl implements SkillRepository {
     }
 
     @Override
-    public void getAll() throws IOException {
+    public List<Skill> getAll() throws IOException {
         String fileTostring;
         List<String> items = new ArrayList<>();
         try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
@@ -108,11 +108,14 @@ public class JavaIOSkillRepositoryImpl implements SkillRepository {
                 }
             }
         }
-        if (items != null) {
-            for (String s : items) {
-                System.out.println(s);
-            }
-        } else System.out.println("File is empty!");
+        List<Skill> skillList = new ArrayList<>();
+        for (String line : items) {
+            String[] mass = line.split(",");
+            Long id = Long.valueOf(mass[0]);
+            String name = mass[1];
+            skillList.add(new Skill(id, name));
+        }
+        return skillList;
     }
 
     @Override

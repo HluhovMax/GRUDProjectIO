@@ -1,5 +1,6 @@
 package mvc.repository;
 
+import mvc.model.Account;
 import mvc.model.Developer;
 
 import java.io.*;
@@ -96,7 +97,7 @@ public class JavaIODeveloperRepositoryImpl implements DeveloperRepository {
     }
 
     @Override
-    public void getAll() throws IOException {
+    public List<Developer> getAll() throws IOException {
         String fileTostring;
         List<String> items = new ArrayList<>();
         try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
@@ -107,15 +108,11 @@ public class JavaIODeveloperRepositoryImpl implements DeveloperRepository {
                 }
             }
         }
-        if (items != null) {
-            for (String s : items) {
-                System.out.println(s);
-            }
-        } else System.out.println("File is empty!");
+        return null;
     }
 
     @Override
-    public String getById(Long id) throws IOException {
+    public Developer getById(Long id) throws IOException {
         String fileTostring;
         String[] arr;
         List<String> items = new ArrayList<>();

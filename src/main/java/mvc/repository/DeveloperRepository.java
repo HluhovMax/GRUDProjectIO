@@ -3,6 +3,7 @@ package mvc.repository;
 import mvc.model.Developer;
 
 import java.io.IOException;
+import java.util.List;
 
 /**
  * Created by Max Hluhov on 19.10.2018.
@@ -14,7 +15,7 @@ public interface DeveloperRepository {
 
     public void update(Developer developer) throws IOException;
 
-    public void getAll() throws IOException;
+    public List<Developer> getAll() throws IOException;
 
-    public String getById(Long id) throws IOException;
+    public Developer getById(Long id) throws IOException;
 }

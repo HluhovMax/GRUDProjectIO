@@ -98,7 +98,7 @@ public class JavaIOAccountRepositoryImpl implements AccountRepository {
     }
 
     @Override
-    public void getAll() throws IOException {
+    public List<Account> getAll() throws IOException {
         String fileTostring;
         List<String> items = new ArrayList<>();
         try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
@@ -109,11 +109,14 @@ public class JavaIOAccountRepositoryImpl implements AccountRepository {
                 }
             }
         }
-        if (items != null) {
-            for (String s : items) {
-                System.out.println(s);
-            }
-        } else System.out.println("File is empty!");
+        List<Account> list = new ArrayList<>();
+        for (String s : items) {
+            String[] mass = s.split(",");
+            Long id = Long.valueOf(mass[0]);
+            String data = mass[1];
+            list.add(new Account(id, data));
+        }
+        return list;
     }
 
     @Override

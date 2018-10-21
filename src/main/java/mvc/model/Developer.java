@@ -28,14 +28,6 @@ public class Developer {
         return id;
     }
 
-    public String returnSpecifications() {
-        String specifications = name + ' '
-                + surName + ' '
-                + specialty + ' '
-                + skills + ' '
-                + account;
-        return specifications;
-    }
 
     @Override
     public String toString() {
