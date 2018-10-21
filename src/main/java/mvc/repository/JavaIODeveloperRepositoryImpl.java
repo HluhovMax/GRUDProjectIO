@@ -139,8 +139,8 @@ public class JavaIODeveloperRepositoryImpl implements DeveloperRepository {
 
     @Override
     public Developer getById(Long id) throws IOException {
+        Developer developer;
         String fileTostring;
-        String[] arr;
         List<String> items = new ArrayList<>();
         try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
             while ((fileTostring = reader.readLine()) != null) {
@@ -149,18 +149,39 @@ public class JavaIODeveloperRepositoryImpl implements DeveloperRepository {
                     items.add(fileTostring);
                 }
             }
-            arr = items.toArray(new String[items.size()]);
-            Developer developer;
-            for (int i = 0; i < arr.length; i++) {
-                String line = arr[i].replaceFirst(",", ":");
-                String[] recordLine = line.split(":");
-                Long idi = Long.valueOf(recordLine[0]);
-                if (id.equals(idi)) {
-                    return null;
-                }
-            }
         } catch (IOException e) {
             System.out.println(e);
+        }
+        List<Skill> skillList = new ArrayList<>();
+        for (String devLine : items) {
+            devLine = devLine.trim();
+            String[] mass = devLine.split(",");
+            Long idi = Long.valueOf(mass[0]);
+            if (id.equals(idi)) {
+                String name = mass[1];
+                String surName = mass[2];
+                String specialty = mass[3];
+                mass[4] = mass[4].substring(2, mass[4].length() - 1);
+                String[] arr = mass[4].split(";");
+                for (int i = 0; i < arr.length; i++) {
+                    String[] array = arr[i].split("-");
+                    Long skId = Long.valueOf(array[0]);
+                    StringBuilder sb = new StringBuilder(array[1]);
+                    sb.deleteCharAt(array[1].length() - 1);
+                    array[1] = sb.toString();
+                    skillList.add(new Skill(skId, array[1]));
+                }
+                Account account;
+                mass[5] = mass[5].trim();
+                String[] a = mass[5].split("-");
+                Long accId = Long.valueOf(a[0]);
+                StringBuilder sb = new StringBuilder(a[1]);
+                sb.deleteCharAt(a[1].length() - 1);
+                a[1] = sb.toString();
+                account = new Account(accId, a[1]);
+                developer = new Developer(id, name, surName, specialty, skillList, account);
+                return developer;
+            }
         }
         return null;
     }

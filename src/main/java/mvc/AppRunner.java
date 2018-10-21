@@ -1,10 +1,8 @@
 package mvc;
 
-import mvc.model.Developer;
 import mvc.repository.JavaIODeveloperRepositoryImpl;
 
 import java.io.IOException;
-import java.util.List;
 
 /**
  * Created by Max Hluhov on 14.10.2018.
@@ -18,9 +16,6 @@ public class AppRunner {
 //        skillList.add(new Skill(3L, "maven"));
 //        devR.save(new Developer(1L, "Ivan", "Ivanov", "javaDev",
 //                skillList, new Account(1L, "data.txt")));
-        List<Developer> developerList = devR.getAll();
-        for (Developer d : developerList) {
-            System.out.println(d);
-        }
+        devR.save(devR.getById(2L));
     }
 }
