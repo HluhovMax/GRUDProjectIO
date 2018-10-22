@@ -1,3 +1,6 @@
 1,java/
 2,NoSQL/
 3,NoSQL/
+4,JS/
+5,React/
+6,HTML/
