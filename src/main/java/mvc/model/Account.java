@@ -7,6 +7,9 @@ public class Account {
     private Long id;
     private String data;
 
+    public Account() {
+    }
+
     public Account(Long id, String data) {
         this.id = id;
         this.data = data;
@@ -18,6 +21,14 @@ public class Account {
 
     public String getData() {
         return data;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public void setData(String data) {
+        this.data = data;
     }
 
     @Override

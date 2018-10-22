@@ -3,8 +3,6 @@ package mvc.repository;
 import mvc.model.Account;
 
 import java.io.*;
-import java.nio.file.Files;
-import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -18,12 +16,24 @@ public class JavaIOAccountRepositoryImpl implements AccountRepository {
     
     @Override
     public void save(Account account) throws IOException {
-        String accountLine = account.toString();
-        accountLine = accountLine.trim();
-        ArrayList<String> list = readLines(file);
-        list.add(accountLine);
+        String fileTostring;
+        List<String> items = new ArrayList<>();
+        try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
+            while ((fileTostring = reader.readLine()) != null) {
+                fileTostring = fileTostring.trim();
+                if ((fileTostring.length()) != 0) {
+                    items.add(fileTostring);
+                }
+            }
+        } catch (IOException e) {
+            System.out.println(e);
+        }
+        String accountID = String.valueOf(account.getId());
+        String accountData = account.getData();
+        String accountToSave = accountID + "," + accountData + "/";
+        items.add(accountToSave);
         try (FileWriter writer = new FileWriter(file, true)) {
-            writer.write(accountLine + "\n");
+            writer.write(accountToSave + "\n");
         } catch (IOException e) {
             System.out.println(e.getMessage());
         }
@@ -151,11 +161,5 @@ public class JavaIOAccountRepositoryImpl implements AccountRepository {
             System.out.println(e);
         }
         return null;
-    }
-
-    private ArrayList<String> readLines(File filename) throws IOException {
-        Path filepath = filename.toPath();
-        ArrayList<String> strList = (ArrayList<String>) Files.readAllLines(filepath);
-        return strList;
     }
 }

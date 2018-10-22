@@ -5,8 +5,6 @@ import mvc.model.Developer;
 import mvc.model.Skill;
 
 import java.io.*;
-import java.nio.file.Files;
-import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -20,13 +18,43 @@ public class JavaIODeveloperRepositoryImpl implements DeveloperRepository {
 
     @Override
     public void save(Developer developer) throws IOException {
-        String skil = developer.toString();
-        ArrayList<String> arr = readLines(file);
-        arr.add(skil);
-        try (FileWriter fw = new FileWriter(file, true)) {
-            fw.write(skil + "\n");
+        String fileTostring;
+        List<String> items = new ArrayList<>();
+        try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
+            while ((fileTostring = reader.readLine()) != null) {
+                fileTostring = fileTostring.trim();
+                if ((fileTostring.length()) != 0) {
+                    items.add(fileTostring);
+                }
+            }
         } catch (IOException e) {
-            System.out.println("IO exception: " + e);
+            System.out.println(e);
+        }
+        String developerID = String.valueOf(developer.getId());
+        String developerName = developer.getName();
+        String developerLastN = developer.getSurName();
+        String developerSpecialty = developer.getSpecialty();
+        List<String> developerSkillIdList = new ArrayList<>();
+        List<Skill> skillList = developer.getSkills();
+        for (Skill skill : skillList) {
+            developerSkillIdList.add(String.valueOf(skill.getId()));
+        }
+        StringBuilder sb = new StringBuilder();
+        for (String s : developerSkillIdList) {
+            sb.append(s + ';');
+        }
+        String developerSkillID = sb.toString();
+        developerSkillID = '{' + developerSkillID + '}';
+        Account account = developer.getAccount();
+        String developerAccountID = String.valueOf(account.getId());
+        String writeDeveloperObjectToFile = developerID + ',' + developerName +
+                ',' + developerLastN + ',' + developerSpecialty + ',' +
+                developerSkillID + ',' + developerAccountID + '/';
+        items.add(writeDeveloperObjectToFile);
+        try (FileWriter writer = new FileWriter(file, true)) {
+            writer.write(writeDeveloperObjectToFile + "\n");
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
         }
     }
 
@@ -99,6 +127,7 @@ public class JavaIODeveloperRepositoryImpl implements DeveloperRepository {
 
     @Override
     public List<Developer> getAll() throws IOException {
+        Developer developer;
         String fileTostring;
         List<String> items = new ArrayList<>();
         try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
@@ -110,7 +139,6 @@ public class JavaIODeveloperRepositoryImpl implements DeveloperRepository {
             }
         }
         List<Developer> developerList = new ArrayList<>();
-        List<Skill> skillList = new ArrayList<>();
         for (String devLine : items) {
             devLine = devLine.trim();
             String[] mass = devLine.split(",");
@@ -118,21 +146,30 @@ public class JavaIODeveloperRepositoryImpl implements DeveloperRepository {
             String name = mass[1];
             String surName = mass[2];
             String specialty = mass[3];
-            mass[4] = mass[4].substring(2, mass[4].length() - 1);
+            mass[4] = mass[4].substring(1, mass[4].length() - 1);
             String[] arr = mass[4].split(";");
+            List<Skill> skillList = new ArrayList<>();
             for (int i = 0; i < arr.length; i++) {
-                String[] array = arr[i].split("-");
-                Long idi = Long.valueOf(array[0]);
-                skillList.add(new Skill(idi, array[1]));
+                Long skillID = Long.valueOf(arr[i]);
+                JavaIOSkillRepositoryImpl skillRepository =
+                        new JavaIOSkillRepositoryImpl();
+                Skill skill = skillRepository.getById(skillID);
+                String s = skill.getName().substring(0, skill.getName()
+                        .length() - 1);
+                skill.setName(s);
+                skillList.add(skill);
             }
-            Account account = new Account(0L, "");
-            mass[5] = mass[5].trim();
-            String[] a = mass[5].split("-");
-            for (int i = 0; i < a.length; i++) {
-                Long idi = Long.valueOf(a[0]);
-                account = new Account(idi, a[1]);
-            }
-            developerList.add(new Developer(id, name, surName, specialty, skillList, account));
+            mass[5] = mass[5].substring(0, mass[5].length() - 1);
+            Long accountID = Long.valueOf(mass[5]);
+            JavaIOAccountRepositoryImpl accountRepository =
+                    new JavaIOAccountRepositoryImpl();
+            Account account = accountRepository.getById(accountID);
+            String s = account.getData().substring(0, account.getData()
+                    .length() - 1);
+            account.setData(s);
+            developer = new Developer(id, name, surName, specialty,
+                    skillList, account);
+            developerList.add(developer);
         }
         return developerList;
     }
@@ -161,34 +198,31 @@ public class JavaIODeveloperRepositoryImpl implements DeveloperRepository {
                 String name = mass[1];
                 String surName = mass[2];
                 String specialty = mass[3];
-                mass[4] = mass[4].substring(2, mass[4].length() - 1);
+                mass[4] = mass[4].substring(1, mass[4].length() - 1);
                 String[] arr = mass[4].split(";");
                 for (int i = 0; i < arr.length; i++) {
-                    String[] array = arr[i].split("-");
-                    Long skId = Long.valueOf(array[0]);
-                    StringBuilder sb = new StringBuilder(array[1]);
-                    sb.deleteCharAt(array[1].length() - 1);
-                    array[1] = sb.toString();
-                    skillList.add(new Skill(skId, array[1]));
+                    Long skillID = Long.valueOf(arr[i]);
+                    JavaIOSkillRepositoryImpl skillRepository =
+                            new JavaIOSkillRepositoryImpl();
+                    Skill skill = skillRepository.getById(skillID);
+                    String s = skill.getName().substring(0, skill.getName()
+                            .length() - 1);
+                    skill.setName(s);
+                    skillList.add(skill);
                 }
-                Account account;
-                mass[5] = mass[5].trim();
-                String[] a = mass[5].split("-");
-                Long accId = Long.valueOf(a[0]);
-                StringBuilder sb = new StringBuilder(a[1]);
-                sb.deleteCharAt(a[1].length() - 1);
-                a[1] = sb.toString();
-                account = new Account(accId, a[1]);
-                developer = new Developer(id, name, surName, specialty, skillList, account);
+                mass[5] = mass[5].substring(0, mass[5].length() - 1);
+                Long accountID = Long.valueOf(mass[5]);
+                JavaIOAccountRepositoryImpl accountRepository =
+                        new JavaIOAccountRepositoryImpl();
+                Account account = accountRepository.getById(accountID);
+                String s = account.getData().substring(0, account.getData()
+                        .length() - 1);
+                account.setData(s);
+                developer = new Developer(id, name, surName, specialty,
+                        skillList, account);
                 return developer;
             }
         }
         return null;
-    }
-
-    private ArrayList<String> readLines(File filename) throws IOException {
-        Path filepath = filename.toPath();
-        ArrayList<String> strList = (ArrayList<String>) Files.readAllLines(filepath);
-        return strList;
     }
 }

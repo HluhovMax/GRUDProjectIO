@@ -3,8 +3,6 @@ package mvc.repository;
 import mvc.model.Skill;
 
 import java.io.*;
-import java.nio.file.Files;
-import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -18,22 +16,28 @@ public class JavaIOSkillRepositoryImpl implements SkillRepository {
 
     @Override
     public void save(Skill skill) throws IOException {
-        String skil = skill.toString();
-        ArrayList<String> arr = readLines(file);
-        arr.add(skil);
-        try (FileWriter fw = new FileWriter(file, true)) {
-            fw.write(skil + "\n");
+        String fileTostring;
+        List<String> items = new ArrayList<>();
+        try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
+            while ((fileTostring = reader.readLine()) != null) {
+                fileTostring = fileTostring.trim();
+                if ((fileTostring.length()) != 0) {
+                    items.add(fileTostring);
+                }
+            }
         } catch (IOException e) {
-            System.out.println("IO exception: " + e);
+            System.out.println(e);
+        }
+        String skillId = String.valueOf(skill.getId());
+        String skillName = skill.getName();
+        String skillToSave = skillId + "," + skillName + "/";
+        items.add(skillToSave);
+        try (FileWriter writer = new FileWriter(file, true)) {
+                writer.write(skillToSave + "\n");
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
         }
     }
-
-    private ArrayList<String> readLines(File filename) throws IOException {
-        Path filepath = filename.toPath();
-        ArrayList<String> strList = (ArrayList<String>) Files.readAllLines(filepath);
-        return strList;
-    }
-
 
     public Skill getById(Long id) {
         Skill skill;
@@ -47,18 +51,18 @@ public class JavaIOSkillRepositoryImpl implements SkillRepository {
                     items.add(fileTostring);
                 }
             }
-            arr = items.toArray(new String[items.size()]);
-            for (int i = 0; i < arr.length; i++) {
-                String[] recordLine = arr[i].split(",");
-                Long idi = Long.valueOf(recordLine[0]);
-                String name = String.valueOf(recordLine[1]);
-                if (id.equals(idi)) {
-                    skill = new Skill(idi, name);
-                    return skill;
-                }
-            }
         } catch (IOException e) {
             System.out.println(e);
+        }
+        arr = items.toArray(new String[items.size()]);
+        for (int i = 0; i < arr.length; i++) {
+            String[] recordLine = arr[i].split(",");
+            Long idi = Long.valueOf(recordLine[0]);
+            String name = String.valueOf(recordLine[1]);
+            if (id.equals(idi)) {
+                skill = new Skill(idi, name);
+                return skill;
+            }
         }
         return null;
     }
