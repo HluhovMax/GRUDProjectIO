@@ -3,7 +3,6 @@ package mvc.controller;
 import mvc.model.Skill;
 import mvc.repository.JavaIOSkillRepositoryImpl;
 import mvc.repository.SkillRepository;
-import mvc.view.SkillViewer;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -14,7 +13,6 @@ import java.util.List;
  */
 public class SkillController {
     private SkillRepository skillRepository;
-    private SkillViewer skillViewer;
     private Skill skill;
     private List<Skill> skillList;
 
@@ -24,56 +22,49 @@ public class SkillController {
         skill = new Skill();
     }
 
-    public SkillController(SkillViewer skillViewer) {
-        skillRepository = new JavaIOSkillRepositoryImpl();
-        this.skillViewer = skillViewer;
-        skill = new Skill();
-    }
-
-    public void saveToSkillRepo() {
-        Long id = Long.valueOf(skillViewer.getId());
-        String name = skillViewer.getName();
-        skill.setId(id);
-        skill.setName(name);
-        try {
-            skillRepository.save(skill);
-        } catch (IOException e) {
-            System.out.println(e.getMessage());
+    public void saveToSkillRepo(Skill skill) {
+        if (skill!=null) {
+            try {
+                skillRepository.save(skill);
+            } catch (IOException e) {
+                System.out.println(e.getMessage());
+            }
         }
     }
 
-    public void updateToSkillRepo() {
-        Long id = Long.valueOf(skillViewer.getId());
-        String name = skillViewer.getName();
-        skill.setId(id);
-        skill.setName(name);
-        try {
-            skillRepository.update(skill);
-        } catch (IOException e) {
-            System.out.println(e.getMessage());
+    public void updateToSkillRepo(Skill skill) {
+        if (skill!=null) {
+            try {
+                skillRepository.update(skill);
+            } catch (IOException e) {
+                System.out.println(e.getMessage());
+            }
         }
     }
 
-    public void deleteFromSkillRepo() {
-        Long id = Long.valueOf(skillViewer.getId());
-        try {
-            skillRepository.delete(id);
-        } catch (IOException e) {
-            System.out.println(e.getMessage());
+    public void deleteFromSkillRepo(Long id) {
+        if (id!=0) {
+            try {
+                skillRepository.delete(id);
+            } catch (IOException e) {
+                System.out.println(e.getMessage());
+            }
         }
     }
 
-    public Skill getByIdFromSkillRepo() {
-        Long id = Long.valueOf(skillViewer.getId());
-        try {
-            skill = skillRepository.getById(id);
-        } catch (IOException e) {
-            System.out.println(e.getMessage());
+    public Skill getByIdFromSkillRepo(Long id) {
+        if (id!=0) {
+            try {
+                skill = skillRepository.getById(id);
+            } catch (IOException e) {
+                System.out.println(e.getMessage());
+            }
+            String name = skill.getName().substring(0,
+                    skill.getName().length() - 1);
+            skill.setName(name);
+            return skill;
         }
-        String name = skill.getName().substring(0,
-                skill.getName().length() - 1);
-        skill.setName(name);
-        return skill;
+        return null;
     }
 
     public List<Skill> getAll() {
