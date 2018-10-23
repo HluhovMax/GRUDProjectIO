@@ -13,6 +13,12 @@ import java.util.List;
  * Created by Max Hluhov on 19.10.2018.
  */
 public class JavaIODeveloperRepositoryImpl implements DeveloperRepository {
+    private SkillRepository skillRepository;
+    private AccountRepository accountRepository;
+    public JavaIODeveloperRepositoryImpl() {
+        skillRepository = new JavaIOSkillRepositoryImpl();
+        accountRepository = new JavaIOAccountRepositoryImpl();
+    }
 
     private File file = new File("src\\main\\resources\\files\\developers.txt");
 
@@ -151,8 +157,6 @@ public class JavaIODeveloperRepositoryImpl implements DeveloperRepository {
             List<Skill> skillList = new ArrayList<>();
             for (int i = 0; i < arr.length; i++) {
                 Long skillID = Long.valueOf(arr[i]);
-                SkillRepository skillRepository =
-                        new JavaIOSkillRepositoryImpl();
                 Skill skill = skillRepository.getById(skillID);
                 String s = skill.getName().substring(0, skill.getName()
                         .length() - 1);
@@ -161,8 +165,6 @@ public class JavaIODeveloperRepositoryImpl implements DeveloperRepository {
             }
             mass[5] = mass[5].substring(0, mass[5].length() - 1);
             Long accountID = Long.valueOf(mass[5]);
-            AccountRepository accountRepository =
-                    new JavaIOAccountRepositoryImpl();
             Account account = accountRepository.getById(accountID);
             String s = account.getData().substring(0, account.getData()
                     .length() - 1);
@@ -202,8 +204,6 @@ public class JavaIODeveloperRepositoryImpl implements DeveloperRepository {
                 String[] arr = mass[4].split(";");
                 for (int i = 0; i < arr.length; i++) {
                     Long skillID = Long.valueOf(arr[i]);
-                    SkillRepository skillRepository =
-                            new JavaIOSkillRepositoryImpl();
                     Skill skill = skillRepository.getById(skillID);
                     String s = skill.getName().substring(0, skill.getName()
                             .length() - 1);
@@ -212,8 +212,6 @@ public class JavaIODeveloperRepositoryImpl implements DeveloperRepository {
                 }
                 mass[5] = mass[5].substring(0, mass[5].length() - 1);
                 Long accountID = Long.valueOf(mass[5]);
-                AccountRepository accountRepository =
-                        new JavaIOAccountRepositoryImpl();
                 Account account = accountRepository.getById(accountID);
                 String s = account.getData().substring(0, account.getData()
                         .length() - 1);

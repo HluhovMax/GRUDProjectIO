@@ -1,12 +1,10 @@
 package mvc;
 
-import mvc.model.Account;
-import mvc.model.Developer;
+import mvc.controller.SkillController;
 import mvc.model.Skill;
-import mvc.repository.*;
+import mvc.view.SkillViewer;
 
 import java.io.IOException;
-import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -14,16 +12,11 @@ import java.util.List;
  */
 public class AppRunner {
     public static void main(String[] args) throws IOException {
-        DeveloperRepository developerRepository = new JavaIODeveloperRepositoryImpl();
-        SkillRepository skillRepository = new JavaIOSkillRepositoryImpl();
-        List<Skill> skillList;
-        AccountRepository accountRepository = new JavaIOAccountRepositoryImpl();
-        Account account = accountRepository.getById(2L);
-        skillList = new LinkedList<>();
-        skillList.add(skillRepository.getById(4l));
-        skillList.add(skillRepository.getById(5l));
-        skillList.add(skillRepository.getById(6l));
-        developerRepository.save(new Developer(1999987L,
-                "Iv", "La", "Front-end", skillList, account));
+        SkillController c = new SkillController();
+        SkillViewer skillViewer = new SkillViewer(c);
+        List<Skill> skillList = skillViewer.getAll();
+        for (Skill s : skillList) {
+            System.out.println(s);
         }
+    }
 }
