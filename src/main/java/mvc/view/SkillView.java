@@ -71,7 +71,7 @@ public class SkillView {
         return null;
     }
 
-    public List<Skill> getAll() {
+    public List<Skill> getAll(){
         skillList = controller.getAll();
         return skillList;
     }

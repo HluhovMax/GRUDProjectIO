@@ -101,9 +101,7 @@ public class JavaIODeveloperRepositoryImpl implements DeveloperRepository {
 
     @Override
     public void update(Developer developer) throws IOException {
-        Long id = developer.getId();
         String fileToString;
-        String arr[];
         List<String> list = new ArrayList<>();
         try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
             while ((fileToString = reader.readLine()) != null) {
@@ -112,22 +110,42 @@ public class JavaIODeveloperRepositoryImpl implements DeveloperRepository {
                     list.add(fileToString);
                 }
             }
-            arr = list.toArray(new String[list.size()]);
-            for (int i = 0; i < arr.length; i++) {
-                String record[] = arr[i].split(",");
-                Long recordId = Long.valueOf(record[0]);
-                if (id.equals(recordId)) {
-                    arr[i] = developer.toString();
-                }
-            }
-            list = new ArrayList<>(Arrays.asList(arr));
-            try (FileWriter writer = new FileWriter(file)) {
-                for (String s : list) {
-                    writer.write(s + "\n");
-                }
-            }
         } catch (IOException e) {
             System.out.println(e.getMessage());
+        }
+        String developerID = String.valueOf(developer.getId());
+        String developerName = developer.getName();
+        String developerLastN = developer.getSurName();
+        String developerSpecialty = developer.getSpecialty();
+        List<String> developerSkillIdList = new ArrayList<>();
+        List<Skill> skillList = developer.getSkills();
+        for (Skill skill : skillList) {
+            developerSkillIdList.add(String.valueOf(skill.getId()));
+        }
+        StringBuilder sb = new StringBuilder();
+        for (String s : developerSkillIdList) {
+            sb.append(s + ';');
+        }
+        String developerSkillID = sb.toString();
+        developerSkillID = '{' + developerSkillID + '}';
+        Account account = developer.getAccount();
+        String developerAccountID = String.valueOf(account.getId());
+        String writeDeveloperObjectToFile = developerID + ',' + developerName +
+                ',' + developerLastN + ',' + developerSpecialty + ',' +
+                developerSkillID + ',' + developerAccountID + '/';
+        String[] listToArray = list.toArray(new String[list.size()]);
+        for (int i = 0; i < listToArray.length; i++) {
+            String record[] = listToArray[i].split(",");
+            Long recordId = Long.valueOf(record[0]);
+            if (recordId.equals(developer.getId())) {
+                listToArray[i] = writeDeveloperObjectToFile;
+            }
+        }
+        list = new ArrayList<>(Arrays.asList(listToArray));
+        try (FileWriter writer = new FileWriter(file)) {
+            for (String s : list) {
+                writer.write(s + "\n");
+            }
         }
     }
 
