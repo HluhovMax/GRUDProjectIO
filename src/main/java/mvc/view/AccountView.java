@@ -1,6 +1,7 @@
 package mvc.view;
 
 import mvc.controller.AccountController;
+import mvc.exception.NoSuchElementException;
 import mvc.model.Account;
 
 import java.util.ArrayList;
@@ -61,12 +62,16 @@ public class AccountView {
         }
     }
 
-    public Account getAccountById() {
+    public Account getAccountById() throws NoSuchElementException{
         System.out.println("to get account by id, enter id: ");
         id = idScanner.nextLong();
         if (id != 0) {
             account = accountController.getByIdFromAccountRepo(id);
-            return account;
+            if (account != null) {
+                return account;
+            } else {
+                throw new NoSuchElementException();
+            }
         }
         return null;
     }

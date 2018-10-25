@@ -1,10 +1,14 @@
 package mvc.view;
 
 import mvc.controller.DeveloperController;
+import mvc.exception.NoSuchElementException;
 import mvc.model.Account;
 import mvc.model.Developer;
 import mvc.model.Skill;
+import mvc.repository.JavaIOSkillRepositoryImpl;
+import mvc.repository.SkillRepository;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -13,11 +17,6 @@ import java.util.Scanner;
  * Created by Max Hluhov on 23.10.2018.
  */
 public class DeveloperView {
-    private Long id;
-    private String name;
-    private String lastName;
-    private String specialty;
-    private List<Skill> skillList;
     private List<Developer> developerList;
     private DeveloperController developerController;
     private Scanner numScanner;
@@ -29,7 +28,6 @@ public class DeveloperView {
     private AccountView accountView;
 
     public DeveloperView() {
-        skillList = new ArrayList<>();
         developerList = new ArrayList<>();
         developerController = new DeveloperController();
         numScanner = new Scanner(System.in);
@@ -42,48 +40,36 @@ public class DeveloperView {
     }
 
     public void saveDeveloper() {
+        Long id;
+        String name;
+        String lastName;
+        String specialty;
+        List<Skill> skillList = new ArrayList<>();
         System.out.println("to save developer, enter id," +
                 " name, lastName, specialty, skills, account: ");
         id = numScanner.nextLong();
         name = stringScanner.nextLine();
         lastName = stringScanner.nextLine();
         specialty = stringScanner.nextLine();
-        System.out.println("how many skills do you want to add: ");
-        int num = numScanner.nextInt();
-        switch (num) {
-            case 1:
-                skill = skillView.getSkillById();
-                skillList.add(skill);
-                break;
-            case 2:
-                for (int i = 0; i < 2; i++) {
-                    skill = skillView.getSkillById();
-                    skillList.add(skill);
-                }
-                break;
-            case 3:
-                for (int i = 0; i < 3; i++) {
-                    skill = skillView.getSkillById();
-                    skillList.add(skill);
-                }
-                break;
-            case 4:
-                for (int i = 0; i < 4; i++) {
-                    skill = skillView.getSkillById();
-                    skillList.add(skill);
-                }
-                break;
-            case 5:
-                for (int i = 0; i < 5; i++) {
-                    skill = skillView.getSkillById();
-                    skillList.add(skill);
-                }
-                break;
-            default:
-                System.out.println("Error!");
-                break;
+        System.out.println("which skills do you want to add: ");
+        System.out.println(skillView.getAll());
+        String skillString = stringScanner.nextLine();
+        String[] skillStringArray = skillString.split(",");
+        SkillRepository sr = new JavaIOSkillRepositoryImpl();
+        for (String s : skillStringArray) {
+            Long skillID = Long.valueOf(s);
+            try {
+                skill = sr.getById(skillID);
+            } catch (IOException e) {
+                System.out.println(e.getMessage());
+            }
+            skillList.add(skill);
         }
-        account = accountView.getAccountById();
+        try {
+            account = accountView.getAccountById();
+        } catch (NoSuchElementException e) {
+            System.out.println(e.getMessage());
+        }
         if ((id != 0) && (name != null) && (lastName != null) &&
                 (specialty != null) &&
                 (skillList != null) &&
@@ -100,49 +86,36 @@ public class DeveloperView {
         }
     }
 
-    public void updateDeveloper() {// при использовании метода update,
-    // в файл пишутся не только id скилов, но и полные сведения о них.
+    public void updateDeveloper() {
+        Long id;
+        String name;
+        String lastName;
+        String specialty;
+        List<Skill> skillList = new ArrayList<>();
         System.out.println("to update developer, enter id & newInfo: ");
         id = numScanner.nextLong();
         name = stringScanner.nextLine();
         lastName = stringScanner.nextLine();
         specialty = stringScanner.nextLine();
-        System.out.println("how many skills do you want to add: ");
-        int num = numScanner.nextInt();
-        switch (num) {
-            case 1:
-                skill = skillView.getSkillById();
-                skillList.add(skill);
-                break;
-            case 2:
-                for (int i = 0; i < 2; i++) {
-                    skill = skillView.getSkillById();
-                    skillList.add(skill);
-                }
-                break;
-            case 3:
-                for (int i = 0; i < 3; i++) {
-                    skill = skillView.getSkillById();
-                    skillList.add(skill);
-                }
-                break;
-            case 4:
-                for (int i = 0; i < 4; i++) {
-                    skill = skillView.getSkillById();
-                    skillList.add(skill);
-                }
-                break;
-            case 5:
-                for (int i = 0; i < 5; i++) {
-                    skill = skillView.getSkillById();
-                    skillList.add(skill);
-                }
-                break;
-            default:
-                System.out.println("Error!");
-                break;
+        System.out.println("which skills do you want to add: ");
+        System.out.println(skillView.getAll());
+        String skillString = stringScanner.nextLine();
+        String[] skillStringArray = skillString.split(",");
+        SkillRepository sr = new JavaIOSkillRepositoryImpl();
+        for (String s : skillStringArray) {
+            Long skillID = Long.valueOf(s);
+            try {
+                skill = sr.getById(skillID);
+            } catch (IOException e) {
+                System.out.println(e.getMessage());
+            }
+            skillList.add(skill);
         }
-        account = accountView.getAccountById();
+        try {
+            account = accountView.getAccountById();
+        } catch (NoSuchElementException e) {
+            System.out.println(e.getMessage());
+        }
         if ((id != 0) && (name != null) && (lastName != null) &&
                 (specialty != null) &&
                 (skillList != null) &&
@@ -161,18 +134,22 @@ public class DeveloperView {
 
     public void deleteDeveloper() {
         System.out.println("to delete developer, enter id: ");
-        id = numScanner.nextLong();
+        Long id = numScanner.nextLong();
         if (id != 0) {
             developerController.deleteFromDeveloperRepo(id);
         }
     }
 
-    public Developer getDeveloperById() {
+    public Developer getDeveloperById() throws NoSuchElementException {
         System.out.println("to get developer by id, enter id: ");
-        id = numScanner.nextLong();
+        Long id = numScanner.nextLong();
         if (id != 0) {
             developer = developerController.getByIdFromDeveloperRepo(id);
-            return developer;
+            if (developer != null) {
+                return developer;
+            } else {
+                throw new NoSuchElementException("NO such developer!!!");
+            }
         }
         return null;
     }

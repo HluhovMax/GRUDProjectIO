@@ -1,6 +1,7 @@
 package mvc.view;
 
 import mvc.controller.SkillController;
+import mvc.exception.NoSuchElementException;
 import mvc.model.Skill;
 
 import java.util.ArrayList;
@@ -61,12 +62,16 @@ public class SkillView {
         }
     }
 
-    public Skill getSkillById() {
+    public Skill getSkillById() throws NoSuchElementException {
         System.out.println("to get skill by id, enter id: ");
         id = idScanner.nextLong();
         if (id != 0) {
             skill = controller.getByIdFromSkillRepo(id);
-            return skill;
+            if (skill != null) {
+                return skill;
+            } else {
+                throw new NoSuchElementException();
+            }
         }
         return null;
     }
