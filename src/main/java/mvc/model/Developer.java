@@ -5,7 +5,7 @@ import java.util.List;
 /**
  * Created by Max Hluhov on 19.10.2018.
  */
-public class Developer {
+public class Developer extends BaseEntity{
     private Long id;
     private String name;
     private String surName;

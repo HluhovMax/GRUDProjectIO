@@ -14,6 +14,11 @@ public class JavaIOSkillRepositoryImpl implements SkillRepository {
 
     private File file = new File("src\\main\\resources\\files\\skills.txt");
 
+    /**
+     * method for saving Skill entity to file
+     * @param skill
+     * @throws IOException
+     */
     @Override
     public void save(Skill skill) throws IOException {
         String fileTostring;
@@ -39,10 +44,15 @@ public class JavaIOSkillRepositoryImpl implements SkillRepository {
         }
     }
 
+    /**
+     * method for getting by id Skill entity from file
+     * @param id
+     * @return
+     */
     public Skill getById(Long id) {
         Skill skill;
         String fileTostring;
-        String[] arr;
+        String[] arrayOfItems;
         List<String> items = new ArrayList<>();
         try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
             while ((fileTostring = reader.readLine()) != null) {
@@ -54,9 +64,9 @@ public class JavaIOSkillRepositoryImpl implements SkillRepository {
         } catch (IOException e) {
             System.out.println(e);
         }
-        arr = items.toArray(new String[items.size()]);
-        for (int i = 0; i < arr.length; i++) {
-            String[] recordLine = arr[i].split(",");
+        arrayOfItems = items.toArray(new String[items.size()]);
+        for (int i = 0; i < arrayOfItems.length; i++) {
+            String[] recordLine = arrayOfItems[i].split(",");
             Long idi = Long.valueOf(recordLine[0]);
             String name = String.valueOf(recordLine[1]);
             if (id.equals(idi)) {
@@ -67,9 +77,13 @@ public class JavaIOSkillRepositoryImpl implements SkillRepository {
         return null;
     }
 
+    /**
+     * method for updating Skill entity in the file
+     * @param skill
+     */
     public void update(Skill skill) {
         String fileToString;
-        String arr[];
+        String arrayOfItems[];
         List<String> list = new ArrayList<>();
         try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
             while ((fileToString = reader.readLine()) != null) {
@@ -78,18 +92,18 @@ public class JavaIOSkillRepositoryImpl implements SkillRepository {
                     list.add(fileToString);
                 }
             }
-            arr = list.toArray(new String[list.size()]);
-            for (int i = 0; i < arr.length; i++) {
-                String record[] = arr[i].split(",");
+            arrayOfItems = list.toArray(new String[list.size()]);
+            for (int i = 0; i < arrayOfItems.length; i++) {
+                String record[] = arrayOfItems[i].split(",");
                 Long recordId = Long.valueOf(record[0]);
                 if (skill.getId().equals(recordId)) {
                     record[1] = skill.getName() + '/';
-                    arr[i] = Arrays.toString(record);
-                    arr[i] = arr[i].substring(1, arr[i].length() - 1);
+                    arrayOfItems[i] = Arrays.toString(record);
+                    arrayOfItems[i] = arrayOfItems[i].substring(1, arrayOfItems[i].length() - 1);
                 }
-                arr[i] = arr[i].replaceAll("\\s+", "");
+                arrayOfItems[i] = arrayOfItems[i].replaceAll("\\s+", "");
             }
-            list = new ArrayList<>(Arrays.asList(arr));
+            list = new ArrayList<>(Arrays.asList(arrayOfItems));
             try (FileWriter writer = new FileWriter(file)) {
                 for (String s : list) {
                     writer.write(s + "\n");
@@ -100,6 +114,11 @@ public class JavaIOSkillRepositoryImpl implements SkillRepository {
         }
     }
 
+    /**
+     * method to get all Skill entities from file
+     * @return
+     * @throws IOException
+     */
     @Override
     public List<Skill> getAll() throws IOException {
         String fileTostring;
@@ -114,18 +133,23 @@ public class JavaIOSkillRepositoryImpl implements SkillRepository {
         }
         List<Skill> skillList = new ArrayList<>();
         for (String line : items) {
-            String[] mass = line.split(",");
-            Long id = Long.valueOf(mass[0]);
-            String name = mass[1];
+            String[] split = line.split(",");
+            Long id = Long.valueOf(split[0]);
+            String name = split[1];
             skillList.add(new Skill(id, name));
         }
         return skillList;
     }
 
+    /**
+     * method for deleting Skill entity from file
+     * @param id
+     * @throws IOException
+     */
     @Override
     public void delete(Long id) throws IOException {
         String fileTostring;
-        String[] arr;
+        String[] arrayOfItems;
         List<String> items = new ArrayList<>();
         try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
             while ((fileTostring = reader.readLine()) != null) {
@@ -134,18 +158,18 @@ public class JavaIOSkillRepositoryImpl implements SkillRepository {
                     items.add(fileTostring);
                 }
             }
-            arr = items.toArray(new String[items.size()]);
-            for (int i = 0; i < arr.length; i++) {
-                String[] recordLine = arr[i].split(",");
+            arrayOfItems = items.toArray(new String[items.size()]);
+            for (int i = 0; i < arrayOfItems.length; i++) {
+                String[] recordLine = arrayOfItems[i].split(",");
                 Long idi = Long.valueOf(recordLine[0]);
                 if (id.equals(idi)) {
                     recordLine[0] = "";
                     recordLine[1] = "";
-                    arr[i] = Arrays.toString(recordLine);
-                    arr[i] = "removed";
-                }//correct work
+                    arrayOfItems[i] = Arrays.toString(recordLine);
+                    arrayOfItems[i] = "removed";
+                }
             }
-            List<String> list = new ArrayList<>(Arrays.asList(arr));
+            List<String> list = new ArrayList<>(Arrays.asList(arrayOfItems));
             list.remove("removed");
             try (FileWriter writer = new FileWriter(file)) {
                 for (String s : list) {

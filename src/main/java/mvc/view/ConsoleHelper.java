@@ -1,9 +1,6 @@
-package mvc;
+package mvc.view;
 
 import mvc.exception.NoSuchElementException;
-import mvc.view.AccountView;
-import mvc.view.DeveloperView;
-import mvc.view.SkillView;
 
 import java.util.Scanner;
 
@@ -23,6 +20,9 @@ public class ConsoleHelper {
         scanner = new Scanner(System.in);
     }
 
+    /**
+     * method for starting application
+     */
     public void start() {
         System.out.println("enter: 1 for SkillView|" +
                 " 2 for AccountView| 3 for DeveloperView.");

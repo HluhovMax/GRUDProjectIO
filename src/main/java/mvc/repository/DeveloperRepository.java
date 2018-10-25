@@ -8,7 +8,7 @@ import java.util.List;
 /**
  * Created by Max Hluhov on 19.10.2018.
  */
-public interface DeveloperRepository {
+public interface DeveloperRepository extends GenericRepository<Developer, Long>{
     public void save(Developer developer) throws IOException;
 
     public void delete(Long id) throws IOException;

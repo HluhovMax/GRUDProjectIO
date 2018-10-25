@@ -13,7 +13,12 @@ import java.util.List;
 public class JavaIOAccountRepositoryImpl implements AccountRepository {
 
     private File file = new File("src\\main\\resources\\files\\accounts.txt");
-    
+
+    /**
+     * method for saving Account entity to file
+     * @param account
+     * @throws IOException
+     */
     @Override
     public void save(Account account) throws IOException {
         String fileTostring;
@@ -39,10 +44,15 @@ public class JavaIOAccountRepositoryImpl implements AccountRepository {
         }
     }
 
+    /**
+     * method for deleting Account entity from file
+     * @param id
+     * @throws IOException
+     */
     @Override
     public void delete(Long id) throws IOException {
         String fileTostring;
-        String[] arr;
+        String[] arrayOfItems;
         List<String> items = new ArrayList<>();
         try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
             while ((fileTostring = reader.readLine()) != null) {
@@ -51,18 +61,18 @@ public class JavaIOAccountRepositoryImpl implements AccountRepository {
                     items.add(fileTostring);
                 }
             }
-            arr = items.toArray(new String[items.size()]);
-            for (int i = 0; i < arr.length; i++) {
-                String[] recordLine = arr[i].split(",");
+            arrayOfItems = items.toArray(new String[items.size()]);
+            for (int i = 0; i < arrayOfItems.length; i++) {
+                String[] recordLine = arrayOfItems[i].split(",");
                 Long idi = Long.valueOf(recordLine[0]);
                 if (id.equals(idi)) {
                     recordLine[0] = "";
                     recordLine[1] = "";
-                    arr[i] = Arrays.toString(recordLine);
-                    arr[i] = "removed";
+                    arrayOfItems[i] = Arrays.toString(recordLine);
+                    arrayOfItems[i] = "removed";
                 }
             }
-            List<String> list = new ArrayList<>(Arrays.asList(arr));
+            List<String> list = new ArrayList<>(Arrays.asList(arrayOfItems));
             list.remove("removed");
             try (FileWriter writer = new FileWriter(file)) {
                 for (String s : list) {
@@ -74,10 +84,15 @@ public class JavaIOAccountRepositoryImpl implements AccountRepository {
         }
     }
 
+    /**
+     * method for updating Account entity in the file
+     * @param account
+     * @throws IOException
+     */
     @Override
     public void update(Account account) throws IOException {
         String fileToString;
-        String arr[];
+        String arrayOfItems[];
         List<String> list = new ArrayList<>();
         try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
             while ((fileToString = reader.readLine()) != null) {
@@ -86,18 +101,18 @@ public class JavaIOAccountRepositoryImpl implements AccountRepository {
                     list.add(fileToString);
                 }
             }
-            arr = list.toArray(new String[list.size()]);
-            for (int i = 0; i < arr.length; i++) {
-                String record[] = arr[i].split(",");
+            arrayOfItems = list.toArray(new String[list.size()]);
+            for (int i = 0; i < arrayOfItems.length; i++) {
+                String record[] = arrayOfItems[i].split(",");
                 Long recordId = Long.valueOf(record[0]);
                 if (account.getId().equals(recordId)) {
                     record[1] = account.getData() + '/';// update point
-                    arr[i] = Arrays.toString(record);
-                    arr[i] = arr[i].substring(1, arr[i].length() - 1);
+                    arrayOfItems[i] = Arrays.toString(record);
+                    arrayOfItems[i] = arrayOfItems[i].substring(1, arrayOfItems[i].length() - 1);
                 }
-                arr[i] = arr[i].replaceAll("\\s+", "");
+                arrayOfItems[i] = arrayOfItems[i].replaceAll("\\s+", "");
             }
-            list = new ArrayList<>(Arrays.asList(arr));
+            list = new ArrayList<>(Arrays.asList(arrayOfItems));
             try (FileWriter writer = new FileWriter(file)) {
                 for (String s : list) {
                     writer.write(s + "\n");
@@ -108,6 +123,11 @@ public class JavaIOAccountRepositoryImpl implements AccountRepository {
         }
     }
 
+    /**
+     * method to get all Account entities from file
+     * @return
+     * @throws IOException
+     */
     @Override
     public List<Account> getAll() throws IOException {
         String fileTostring;
@@ -134,11 +154,17 @@ public class JavaIOAccountRepositoryImpl implements AccountRepository {
         return list;
     }
 
+    /**
+     * method for getting by id Account entity from file
+     * @param id
+     * @return
+     * @throws IOException
+     */
     @Override
     public Account getById(Long id) throws IOException {
         Account account;
         String fileTostring;
-        String[] arr;
+        String[] arrayOfItems;
         List<String> items = new ArrayList<>();
         try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
             while ((fileTostring = reader.readLine()) != null) {
@@ -147,9 +173,9 @@ public class JavaIOAccountRepositoryImpl implements AccountRepository {
                     items.add(fileTostring);
                 }
             }
-            arr = items.toArray(new String[items.size()]);
-            for (int i = 0; i < arr.length; i++) {
-                String[] recordLine = arr[i].split(",");
+            arrayOfItems = items.toArray(new String[items.size()]);
+            for (int i = 0; i < arrayOfItems.length; i++) {
+                String[] recordLine = arrayOfItems[i].split(",");
                 Long idi = Long.valueOf(recordLine[0]);
                 String name = String.valueOf(recordLine[1]);
                 if (id.equals(idi)) {

@@ -22,6 +22,11 @@ public class JavaIODeveloperRepositoryImpl implements DeveloperRepository {
 
     private File file = new File("src\\main\\resources\\files\\developers.txt");
 
+    /**
+     * method for saving Developer entity to file
+     * @param developer
+     * @throws IOException
+     */
     @Override
     public void save(Developer developer) throws IOException {
         String fileTostring;
@@ -64,10 +69,15 @@ public class JavaIODeveloperRepositoryImpl implements DeveloperRepository {
         }
     }
 
+    /**
+     * method for deleting Developer entity from file
+     * @param id
+     * @throws IOException
+     */
     @Override
     public void delete(Long id) throws IOException {
         String fileTostring;
-        String[] arr;
+        String[] arrayOfItems;
         List<String> items = new ArrayList<>();
         try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
             while ((fileTostring = reader.readLine()) != null) {
@@ -76,18 +86,18 @@ public class JavaIODeveloperRepositoryImpl implements DeveloperRepository {
                     items.add(fileTostring);
                 }
             }
-            arr = items.toArray(new String[items.size()]);
-            for (int i = 0; i < arr.length; i++) {
-                String[] recordLine = arr[i].split(",");
+            arrayOfItems = items.toArray(new String[items.size()]);
+            for (int i = 0; i < arrayOfItems.length; i++) {
+                String[] recordLine = arrayOfItems[i].split(",");
                 Long idi = Long.valueOf(recordLine[0]);
                 if (id.equals(idi)) {
                     recordLine[0] = "";
                     recordLine[1] = "";
-                    arr[i] = Arrays.toString(recordLine);
-                    arr[i] = "removed";
-                }//correct work
+                    arrayOfItems[i] = Arrays.toString(recordLine);
+                    arrayOfItems[i] = "removed";
+                }
             }
-            List<String> list = new ArrayList<>(Arrays.asList(arr));
+            List<String> list = new ArrayList<>(Arrays.asList(arrayOfItems));
             list.remove("removed");
             try (FileWriter writer = new FileWriter(file)) {
                 for (String s : list) {
@@ -99,6 +109,11 @@ public class JavaIODeveloperRepositoryImpl implements DeveloperRepository {
         }
     }
 
+    /**
+     *  method for updating Developer entity in the file
+     * @param developer
+     * @throws IOException
+     */
     @Override
     public void update(Developer developer) throws IOException {
         String fileToString;
@@ -149,6 +164,11 @@ public class JavaIODeveloperRepositoryImpl implements DeveloperRepository {
         }
     }
 
+    /**
+     * method to get all Developer entities from file
+     * @return
+     * @throws IOException
+     */
     @Override
     public List<Developer> getAll() throws IOException {
         Developer developer;
@@ -165,13 +185,13 @@ public class JavaIODeveloperRepositoryImpl implements DeveloperRepository {
         List<Developer> developerList = new ArrayList<>();
         for (String devLine : items) {
             devLine = devLine.trim();
-            String[] mass = devLine.split(",");
-            Long id = Long.valueOf(mass[0]);
-            String name = mass[1];
-            String surName = mass[2];
-            String specialty = mass[3];
-            mass[4] = mass[4].substring(1, mass[4].length() - 1);
-            String[] arr = mass[4].split(";");
+            String[] split = devLine.split(",");
+            Long id = Long.valueOf(split[0]);
+            String name = split[1];
+            String surName = split[2];
+            String specialty = split[3];
+            split[4] = split[4].substring(1, split[4].length() - 1);
+            String[] arr = split[4].split(";");
             List<Skill> skillList = new ArrayList<>();
             for (int i = 0; i < arr.length; i++) {
                 Long skillID = Long.valueOf(arr[i]);
@@ -181,8 +201,8 @@ public class JavaIODeveloperRepositoryImpl implements DeveloperRepository {
                 skill.setName(s);
                 skillList.add(skill);
             }
-            mass[5] = mass[5].substring(0, mass[5].length() - 1);
-            Long accountID = Long.valueOf(mass[5]);
+            split[5] = split[5].substring(0, split[5].length() - 1);
+            Long accountID = Long.valueOf(split[5]);
             Account account = accountRepository.getById(accountID);
             String s = account.getData().substring(0, account.getData()
                     .length() - 1);
@@ -194,6 +214,12 @@ public class JavaIODeveloperRepositoryImpl implements DeveloperRepository {
         return developerList;
     }
 
+    /**
+     * method for getting by id Developer entity from file
+     * @param id
+     * @return
+     * @throws IOException
+     */
     @Override
     public Developer getById(Long id) throws IOException {
         Developer developer;
@@ -210,9 +236,9 @@ public class JavaIODeveloperRepositoryImpl implements DeveloperRepository {
             System.out.println(e);
         }
         List<Skill> skillList = new ArrayList<>();
-        for (String devLine : items) {
-            devLine = devLine.trim();
-            String[] mass = devLine.split(",");
+        for (String lineOfdevelopers : items) {
+            lineOfdevelopers = lineOfdevelopers.trim();
+            String[] mass = lineOfdevelopers.split(",");
             Long idi = Long.valueOf(mass[0]);
             if (id.equals(idi)) {
                 String name = mass[1];

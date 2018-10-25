@@ -3,7 +3,7 @@ package mvc.model;
 /**
  * Created by Max Hluhov on 19.10.2018.
  */
-public class Account {
+public class Account extends BaseEntity{
     private Long id;
     private String data;
 

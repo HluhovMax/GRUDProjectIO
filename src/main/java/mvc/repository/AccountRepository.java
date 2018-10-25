@@ -8,7 +8,7 @@ import java.util.List;
 /**
  * Created by Max Hluhov on 19.10.2018.
  */
-public interface AccountRepository {
+public interface AccountRepository extends GenericRepository<Account, Long>{
     public void save(Account account) throws IOException;
 
     public void delete(Long id) throws IOException;

@@ -1,16 +1,16 @@
 package mvc.model;
 
 /**
- * Created by Max Hluhov on 14.10.2018.
+ * Created by Max Hluhov on 25.10.2018.
  */
-public class Skill extends BaseEntity{
+public class BaseEntity {
     private Long id;
     private String name;
 
-    public Skill() {
+    public BaseEntity() {
     }
 
-    public Skill(Long id, String name) {
+    public BaseEntity(Long id, String name) {
         this.id = id;
         this.name = name;
     }
@@ -19,12 +19,12 @@ public class Skill extends BaseEntity{
         return id;
     }
 
-    public String getName() {
-        return name;
-    }
-
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getName() {
+        return name;
     }
 
     public void setName(String name) {
@@ -33,9 +33,6 @@ public class Skill extends BaseEntity{
 
     @Override
     public String toString() {
-        return id
-                + ","
-                + name
-                + '/';
+        return id + name;
     }
 }
